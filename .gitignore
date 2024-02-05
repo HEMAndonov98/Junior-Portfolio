@@ -423,4 +423,3 @@ FodyWeavers.xsd
 
 # Entity Framework
 **/*Data/Configuration.cs
-##/#/appsettings.json
