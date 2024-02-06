@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TheBookSummary.Data.Models.MyBookSummary_Models
@@ -44,5 +45,12 @@ namespace TheBookSummary.Data.Models.MyBookSummary_Models
         /// </summary>
         [Comment("Navigation property representing the associated book summary.")]
         public BookSummary BookSummary { get; set; }
+
+        /// <summary>
+        /// Gets or sets the collection of ratings associated with the book.
+        /// </summary>
+        [InverseProperty(nameof(Rating.Book))]
+        [Comment("Collection of ratings associated with the book.")]
+        public ICollection<Rating> Ratings { get; set; }
     }
 }
