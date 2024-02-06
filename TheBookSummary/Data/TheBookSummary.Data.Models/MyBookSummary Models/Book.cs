@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace TheBookSummary.Data.Models.MyBookSummary_Models
 {
     using System;
@@ -21,22 +23,6 @@ namespace TheBookSummary.Data.Models.MyBookSummary_Models
             // Set a unique identifier for the book.
             this.Id = Guid.NewGuid().ToString();
         }
-        
-        /// <summary>
-        /// Gets or sets the short summary of the book.
-        /// </summary>
-        [Required]
-        [MaxLength(BookConstraints.ShortSummaryLength)]
-        [Comment("Short summary of the book. It is required and has a maximum length as defined by BookConstraints.")]
-        public string ShortSummary { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the full summary of the book.
-        /// </summary>
-        [Required]
-        [MaxLength(BookConstraints.FullSummaryLength)]
-        [Comment("Full summary of the book. It is required and has a maximum length as defined by BookConstraints.")]
-        public string FullSummary { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the book.
@@ -45,5 +31,18 @@ namespace TheBookSummary.Data.Models.MyBookSummary_Models
         [MaxLength(BookConstraints.NameLength)]
         [Comment("Name of the book. It is required and has a maximum length as defined by BookConstraints.")]
         public string BookName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the foreign key referencing the associated book summary.
+        /// </summary>
+        [ForeignKey(nameof(BookSummary))]
+        [Comment("Foreign key referencing the associated book summary.")]
+        public string BookSummaryId { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the navigation property representing the associated book summary.
+        /// </summary>
+        [Comment("Navigation property representing the associated book summary.")]
+        public BookSummary BookSummary { get; set; }
     }
 }
