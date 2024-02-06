@@ -4,5 +4,5 @@ public static class RatingConstraints
 {
     public const int MinStarRating = 0;
 
-    public const int MAxStarRating = 10;
+    public const int MaxStarRating = 10;
 }
