@@ -1,10 +1,9 @@
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace TheBookSummary.Data.Models.MyBookSummary_Models
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     
     using Microsoft.EntityFrameworkCore;
     
