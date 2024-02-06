@@ -281,7 +281,7 @@ namespace TheBookSummary.Data.Migrations
 
                     b.HasIndex("IsDeleted");
 
-                    b.ToTable("Books");
+                    b.ToTable("Books", (string)null);
                 });
 
             modelBuilder.Entity("TheBookSummary.Data.Models.MyBookSummary_Models.BookSummary", b =>
@@ -317,7 +317,47 @@ namespace TheBookSummary.Data.Migrations
 
                     b.HasIndex("IsDeleted");
 
-                    b.ToTable("BookSummary");
+                    b.ToTable("BookSummaries", (string)null);
+                });
+
+            modelBuilder.Entity("TheBookSummary.Data.Models.MyBookSummary_Models.Rating", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("BookId")
+                        .HasColumnType("nvarchar(450)")
+                        .HasComment("Foreign key referencing the associated book.");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Stars")
+                        .HasColumnType("int")
+                        .HasComment("Number of stars given in the rating. Must be within the defined range.");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)")
+                        .HasComment("Foreign key referencing the user who made the rating.");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Ratings", (string)null);
                 });
 
             modelBuilder.Entity("TheBookSummary.Data.Models.Setting", b =>
@@ -350,7 +390,7 @@ namespace TheBookSummary.Data.Migrations
 
                     b.HasIndex("IsDeleted");
 
-                    b.ToTable("Settings");
+                    b.ToTable("Settings", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -411,6 +451,21 @@ namespace TheBookSummary.Data.Migrations
                         .HasForeignKey("BookSummaryId");
 
                     b.Navigation("BookSummary");
+                });
+
+            modelBuilder.Entity("TheBookSummary.Data.Models.MyBookSummary_Models.Rating", b =>
+                {
+                    b.HasOne("TheBookSummary.Data.Models.MyBookSummary_Models.Book", "Book")
+                        .WithMany()
+                        .HasForeignKey("BookId");
+
+                    b.HasOne("TheBookSummary.Data.Models.Identity.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("Book");
                 });
 
             modelBuilder.Entity("TheBookSummary.Data.Models.Identity.ApplicationUser", b =>

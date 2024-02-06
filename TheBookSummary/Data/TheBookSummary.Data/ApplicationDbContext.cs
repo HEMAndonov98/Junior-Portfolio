@@ -29,6 +29,7 @@
         public DbSet<Setting> Settings { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<BookSummary> BookSummaries { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
