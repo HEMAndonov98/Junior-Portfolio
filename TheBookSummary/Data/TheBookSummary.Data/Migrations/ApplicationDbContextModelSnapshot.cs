@@ -182,10 +182,12 @@ namespace TheBookSummary.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasComment("Date and time when the user was created.");
 
                     b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasComment("Date and time when the user was deleted.");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
@@ -194,8 +196,19 @@ namespace TheBookSummary.Data.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("FirstName")
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)")
+                        .HasComment("First name of the user. It has a maximum length as defined by ApplicationUserConstraints.");
+
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
+                        .HasColumnType("bit")
+                        .HasComment("Indicates whether the user is deleted.");
+
+                    b.Property<string>("LastName")
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)")
+                        .HasComment("Last name of the user. It has a maximum length as defined by ApplicationUserConstraints.");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -204,7 +217,8 @@ namespace TheBookSummary.Data.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasComment("Date and time when the user was last modified.");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -223,8 +237,16 @@ namespace TheBookSummary.Data.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<int>("RatingsGiven")
+                        .HasColumnType("int")
+                        .HasComment("Number of ratings given by the user.");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SummariesRead")
+                        .HasColumnType("int")
+                        .HasComment("Number of summaries read by the user.");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
@@ -281,7 +303,7 @@ namespace TheBookSummary.Data.Migrations
 
                     b.HasIndex("IsDeleted");
 
-                    b.ToTable("Books", (string)null);
+                    b.ToTable("Books");
                 });
 
             modelBuilder.Entity("TheBookSummary.Data.Models.MyBookSummary_Models.BookSummary", b =>
@@ -317,7 +339,7 @@ namespace TheBookSummary.Data.Migrations
 
                     b.HasIndex("IsDeleted");
 
-                    b.ToTable("BookSummaries", (string)null);
+                    b.ToTable("BookSummaries");
                 });
 
             modelBuilder.Entity("TheBookSummary.Data.Models.MyBookSummary_Models.Rating", b =>
@@ -357,7 +379,7 @@ namespace TheBookSummary.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Ratings", (string)null);
+                    b.ToTable("Ratings");
                 });
 
             modelBuilder.Entity("TheBookSummary.Data.Models.Setting", b =>
@@ -390,7 +412,7 @@ namespace TheBookSummary.Data.Migrations
 
                     b.HasIndex("IsDeleted");
 
-                    b.ToTable("Settings", (string)null);
+                    b.ToTable("Settings");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -456,7 +478,7 @@ namespace TheBookSummary.Data.Migrations
             modelBuilder.Entity("TheBookSummary.Data.Models.MyBookSummary_Models.Rating", b =>
                 {
                     b.HasOne("TheBookSummary.Data.Models.MyBookSummary_Models.Book", "Book")
-                        .WithMany()
+                        .WithMany("Ratings")
                         .HasForeignKey("BookId");
 
                     b.HasOne("TheBookSummary.Data.Models.Identity.ApplicationUser", "ApplicationUser")
@@ -475,6 +497,11 @@ namespace TheBookSummary.Data.Migrations
                     b.Navigation("Logins");
 
                     b.Navigation("Roles");
+                });
+
+            modelBuilder.Entity("TheBookSummary.Data.Models.MyBookSummary_Models.Book", b =>
+                {
+                    b.Navigation("Ratings");
                 });
 #pragma warning restore 612, 618
         }
