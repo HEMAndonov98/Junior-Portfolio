@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TheBookSummary.Data;
 
@@ -11,9 +12,11 @@ using TheBookSummary.Data;
 namespace TheBookSummary.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240214161559_ReplyModelAdded")]
+    partial class ReplyModelAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -452,9 +455,6 @@ namespace TheBookSummary.Data.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
@@ -462,8 +462,6 @@ namespace TheBookSummary.Data.Migrations
                     b.HasIndex("ParentCommentId");
 
                     b.HasIndex("ParentReplyId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Replies");
                 });
@@ -594,18 +592,12 @@ namespace TheBookSummary.Data.Migrations
             modelBuilder.Entity("TheBookSummary.Data.Models.MyBookSummary_Models.Reply", b =>
                 {
                     b.HasOne("TheBookSummary.Data.Models.MyBookSummary_Models.Comment", "ParentComment")
-                        .WithMany("Replies")
+                        .WithMany()
                         .HasForeignKey("ParentCommentId");
 
                     b.HasOne("TheBookSummary.Data.Models.MyBookSummary_Models.Reply", "ParentReply")
                         .WithMany()
                         .HasForeignKey("ParentReplyId");
-
-                    b.HasOne("TheBookSummary.Data.Models.Identity.ApplicationUser", "ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("ApplicationUser");
 
                     b.Navigation("ParentComment");
 
@@ -626,11 +618,6 @@ namespace TheBookSummary.Data.Migrations
                     b.Navigation("Comments");
 
                     b.Navigation("Ratings");
-                });
-
-            modelBuilder.Entity("TheBookSummary.Data.Models.MyBookSummary_Models.Comment", b =>
-                {
-                    b.Navigation("Replies");
                 });
 #pragma warning restore 612, 618
         }
