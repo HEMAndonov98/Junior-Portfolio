@@ -58,7 +58,11 @@ namespace TheBookSummary.Data.Models.MyBookSummary_Models
         [Comment("Navigation property representing the user who made the comment.")]
         public ApplicationUser ApplicationUser { get; set; }
 
+        /// <summary>
+        /// Gets or sets the collection of replies associated with the comment.
+        /// </summary>
         [InverseProperty(nameof(Reply.ParentComment))]
+        [Comment("Collection of replies associated with the comment.")]
         public ICollection<Reply> Replies { get; set; }
     }
 }
