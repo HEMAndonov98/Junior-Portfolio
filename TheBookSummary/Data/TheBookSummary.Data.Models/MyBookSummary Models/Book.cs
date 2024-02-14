@@ -51,5 +51,8 @@ namespace TheBookSummary.Data.Models.MyBookSummary_Models
         [InverseProperty(nameof(Rating.Book))]
         [Comment("Collection of ratings associated with the book.")]
         public ICollection<Rating> Ratings { get; set; }
+        
+        [InverseProperty(nameof(Comment.Book))]
+        public ICollection<Comment> Comments { get; set; }
     }
 }
