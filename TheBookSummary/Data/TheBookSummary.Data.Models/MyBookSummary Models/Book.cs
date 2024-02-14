@@ -52,7 +52,11 @@ namespace TheBookSummary.Data.Models.MyBookSummary_Models
         [Comment("Collection of ratings associated with the book.")]
         public ICollection<Rating> Ratings { get; set; }
         
+        /// <summary>
+        /// Gets or sets the collection of comments associated with the book.
+        /// </summary>
         [InverseProperty(nameof(Comment.Book))]
+        [Comment("Collection of comments associated with the book.")]
         public ICollection<Comment> Comments { get; set; }
     }
 }
