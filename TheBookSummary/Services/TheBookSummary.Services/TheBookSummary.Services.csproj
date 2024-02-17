@@ -18,4 +18,8 @@
         </PackageReference>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\Web\TheBookSummary.Web.ViewModels\TheBookSummary.Web.ViewModels.csproj" />
+    </ItemGroup>
+
 </Project>
