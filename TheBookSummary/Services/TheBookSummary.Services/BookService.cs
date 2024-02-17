@@ -1,3 +1,6 @@
+using System;
+using System.Linq;
+
 namespace TheBookSummary.Services;
 
 using System.Collections.Generic;
@@ -36,12 +39,34 @@ public class BookService : IBookService
     /// <returns>A collection of <see cref="BookViewModel"/> representing all books.</returns>
     public async Task<IEnumerable<BookViewModel>> GetAllBooksAsync()
     {
-        var books = await this._repository
-            .AllAsNoTracking()
-            .ToArrayAsync();
+         var books = await this._repository
+             .AllAsNoTracking()
+             .ToArrayAsync();
 
-        var bookViewModels = this._mapper.Map<IEnumerable<BookViewModel>>(books);
+        // If automapping breaks try manual
+         var bookViewModels = this._mapper.Map<IEnumerable<BookViewModel>>(books);
 
-        return bookViewModels;
+        // manual mapping
+        // var bookViewModels = await this._repository
+        //     .AllAsNoTracking()
+        //     .Include(b => b.Ratings)
+        //     .Include(b => b.Comments.Take(10))
+        //     .Select(b => new BookViewModel()
+        //     {
+        //         Id = b.Id,
+        //         BookName = b.BookName,
+        //         ShortSummary = b.BookSummary.ShortSummary,
+        //         FullSummary = b.BookSummary.FullSummary,
+        //         StarsRating = (int)b.Ratings.Average(r => r.Stars),
+        //         CommentViewModels = b.Comments
+        //             .Select(c => new CommentViewModel()
+        //             {
+        //                 Text = c.Text,
+        //                 Username = c.ApplicationUser.UserName,
+        //             })
+        //             .ToArray(),
+        //     })
+        //     .ToArrayAsync();
+         return bookViewModels;
     }
 }
