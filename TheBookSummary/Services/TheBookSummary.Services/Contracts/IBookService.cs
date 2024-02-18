@@ -1,10 +1,13 @@
+namespace TheBookSummary.Services.Contracts;
+
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TheBookSummary.Web.ViewModels.Book;
 
-namespace TheBookSummary.Services.Contracts;
+using TheBookSummary.Web.ViewModels.Book;
 
 public interface IBookService
 {
     Task<IEnumerable<BookViewModel>> GetAllBooksAsync();
+
+    Task AddBook(BookInputModel inputModel);
 }

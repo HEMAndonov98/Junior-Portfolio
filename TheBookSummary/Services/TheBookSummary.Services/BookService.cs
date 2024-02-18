@@ -69,4 +69,9 @@ public class BookService : IBookService
         //     .ToArrayAsync();
          return bookViewModels;
     }
+
+    public async Task AddBook(BookInputModel inputModel)
+    {
+        
+    }
 }
