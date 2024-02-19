@@ -1,6 +1,3 @@
-using System;
-using System.Linq;
-
 namespace TheBookSummary.Services;
 
 using System.Collections.Generic;
