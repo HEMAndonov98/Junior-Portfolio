@@ -70,8 +70,35 @@ public class BookService : IBookService
          return bookViewModels;
     }
 
+    /// <summary>
+    /// Adds a new book to the database.
+    /// </summary>
+    /// <param name="inputModel">The input model containing information about the book to be added.</param>
+    /// <returns>A task representing the asynchronous operation.</returns>
     public async Task AddBook(BookInputModel inputModel)
     {
-        
+        // Automapping
+        // var book = this._mapper.Map<Book>(inputModel);
+        //
+        // await this._repository.AddAsync(book);
+        // await this._repository.SaveChangesAsync();
+
+        // manual mapping
+        var newSummary = new BookSummary()
+        {
+            ShortSummary = inputModel.Summary.ShortSummary,
+            FullSummary = inputModel.Summary.FullSummary,
+        };
+
+        var newBook = new Book()
+        {
+            BookName = inputModel.BookName,
+            BookSummary = newSummary,
+            Ratings = new List<Rating>(),
+            Comments = new List<Comment>(),
+        };
+
+        await this._repository.AddAsync(newBook);
+        await this._repository.SaveChangesAsync();
     }
 }
