@@ -1,18 +1,7 @@
 ﻿namespace TheBookSummary.Web
 {
     using System.Reflection;
-    
-    using TheBookSummary.Data;
-    using TheBookSummary.Data.Common;
-    using TheBookSummary.Data.Common.Repositories;
-    using TheBookSummary.Data.Models.Identity;
-    using TheBookSummary.Data.Repositories;
-    using TheBookSummary.Data.Seeding;
-    using TheBookSummary.Services.Data;
-    using TheBookSummary.Services.Mapping;
-    using TheBookSummary.Services.Messaging;
-    using TheBookSummary.Web.ViewModels;
-    
+
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
@@ -20,6 +9,19 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using TheBookSummary.Data;
+    using TheBookSummary.Data.Common;
+    using TheBookSummary.Data.Common.Repositories;
+    using TheBookSummary.Data.Models.Identity;
+    using TheBookSummary.Data.Models.MyBookSummary_Models;
+    using TheBookSummary.Data.Repositories;
+    using TheBookSummary.Data.Seeding;
+    using TheBookSummary.Services;
+    using TheBookSummary.Services.Contracts;
+    using TheBookSummary.Services.Data;
+    using TheBookSummary.Services.Mapping;
+    using TheBookSummary.Services.Messaging;
+    using TheBookSummary.Web.ViewModels;
 
     public class Program
     {
@@ -47,6 +49,7 @@
                     options.MinimumSameSitePolicy = SameSiteMode.None;
                 });
 
+            services.AddAutoMapper(typeof(Program));
             services.AddControllersWithViews(
                     options => { options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()); })
                 .AddRazorRuntimeCompilation();
@@ -58,9 +61,11 @@
             // Data repositories
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
+            services.AddScoped(typeof(IDeletableEntityRepository<Book>), typeof(EfDeletableEntityRepository<Book>));
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
             // Application services
+            services.AddTransient<IBookService, BookService>();
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
         }
