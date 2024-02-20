@@ -33,10 +33,10 @@ public class BookInputModel : IMapTo<Book>
     /// <summary>
     /// Gets or sets the collection of rating input models for the book.
     /// </summary>
-    public ICollection<RatingInputModel> Ratings { get; set; }
+    public ICollection<Rating> Ratings { get; set; }
 
     /// <summary>
     /// Gets or sets the collection of comment input models for the book.
     /// </summary>
-    public ICollection<BookCommentInputModel> Comments { get; set; }
+    public ICollection<Comment> Comments { get; set; }
 }
