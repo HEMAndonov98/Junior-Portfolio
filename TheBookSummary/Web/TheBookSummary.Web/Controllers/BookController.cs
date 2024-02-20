@@ -1,15 +1,14 @@
-using System;
-using System.Collections.Generic;
-using TheBookSummary.Web.ViewModels;
-using TheBookSummary.Web.ViewModels.Book;
-
 namespace TheBookSummary.Web.Controllers;
 
+using System;
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+
 using TheBookSummary.Services.Contracts;
+using TheBookSummary.Web.ViewModels;
+using TheBookSummary.Web.ViewModels.Book;
 
 public class BookController : BaseController
 {
@@ -25,11 +24,9 @@ public class BookController : BaseController
     [HttpGet]
     public async Task<IActionResult> Index()
     {
-        IEnumerable<BookViewModel> bookViewModels;
-
         try
         {
-            bookViewModels = await this._bookService.GetAllBooksAsync();
+            var bookViewModels = await this._bookService.GetAllBooksAsync();
             ViewBag.Books = bookViewModels;
         }
         catch (Exception e)
@@ -45,5 +42,23 @@ public class BookController : BaseController
     public IActionResult Create()
     {
         return View();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Create(BookInputModel inputModel)
+    {
+        try
+        {
+            await this._bookService.AddBookAsync(inputModel);
+
+            this._logger.LogInformation("New book added to database!");
+        }
+        catch (Exception e)
+        {
+            this._logger.LogError("EventController/Create/[HttpPost]", e);
+            return View("Error", new ErrorViewModel());
+        }
+
+        return Ok();
     }
 }
