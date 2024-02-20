@@ -29,7 +29,7 @@ public class BookService : IBookService
         this._repository = repository;
         this._mapper = mapper;
     }
-    
+
     /// <summary>
     /// Retrieves all books asynchronously.
     /// </summary>
@@ -72,7 +72,7 @@ public class BookService : IBookService
     /// </summary>
     /// <param name="inputModel">The input model containing information about the book to be added.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
-    public async Task AddBook(BookInputModel inputModel)
+    public async Task AddBookAsync(BookInputModel inputModel)
     {
         // Automapping
         // var book = this._mapper.Map<Book>(inputModel);
@@ -81,21 +81,21 @@ public class BookService : IBookService
         // await this._repository.SaveChangesAsync();
 
         // manual mapping
-        var newSummary = new BookSummary()
-        {
-            ShortSummary = inputModel.Summary.ShortSummary,
-            FullSummary = inputModel.Summary.FullSummary,
-        };
-
-        var newBook = new Book()
-        {
-            BookName = inputModel.BookName,
-            BookSummary = newSummary,
-            Ratings = new List<Rating>(),
-            Comments = new List<Comment>(),
-        };
-
-        await this._repository.AddAsync(newBook);
+         var newSummary = new BookSummary()
+         {
+             ShortSummary = inputModel.Summary.ShortSummary,
+             FullSummary = inputModel.Summary.FullSummary,
+         };
+        
+         var newBook = new Book()
+         {
+             BookName = inputModel.BookName,
+             BookSummary = newSummary,
+             Ratings = new List<Rating>(),
+             Comments = new List<Comment>(),
+         };
+        
+         await this._repository.AddAsync(newBook);
         await this._repository.SaveChangesAsync();
     }
 }
