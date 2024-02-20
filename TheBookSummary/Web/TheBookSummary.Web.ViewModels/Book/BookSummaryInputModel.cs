@@ -1,10 +1,14 @@
+using AutoMapper;
+
 namespace TheBookSummary.Web.ViewModels.Book;
 
 using System.ComponentModel.DataAnnotations;
 
 using TheBookSummary.Common.ViewModelConstraints;
+using TheBookSummary.Data.Models.MyBookSummary_Models;
+using TheBookSummary.Services.Mapping;
 
-public class BookSummaryInputModel
+public class BookSummaryInputModel : IMapTo<BookSummary>
 {
     [Display(Name = "Short summary")]
     [Required(
@@ -25,5 +29,4 @@ public class BookSummaryInputModel
         MinimumLength = BookViewModelConstraints.BookFullSummaryMinLength,
         ErrorMessage = BookViewModelConstraints.InvalidSummaryLength)]
     public string FullSummary { get; set; }
-
 }
