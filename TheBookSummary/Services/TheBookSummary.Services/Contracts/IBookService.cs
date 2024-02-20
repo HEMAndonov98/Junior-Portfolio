@@ -9,5 +9,5 @@ public interface IBookService
 {
     Task<IEnumerable<BookViewModel>> GetAllBooksAsync();
 
-    Task AddBook(BookInputModel inputModel);
+    Task AddBookAsync(BookInputModel inputModel);
 }
