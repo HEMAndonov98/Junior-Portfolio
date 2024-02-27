@@ -2,6 +2,7 @@
 {
     using System.Reflection;
 
+    using AutoMapper;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
@@ -49,7 +50,9 @@
                     options.MinimumSameSitePolicy = SameSiteMode.None;
                 });
 
-            services.AddAutoMapper(typeof(Program));
+            AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
+            services.AddSingleton<IMapper>(AutoMapperConfig.MapperInstance);
+            
             services.AddControllersWithViews(
                     options => { options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()); })
                 .AddRazorRuntimeCompilation();
@@ -80,8 +83,6 @@
                 new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter()
                     .GetResult();
             }
-
-            AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
 
             if (app.Environment.IsDevelopment())
             {
