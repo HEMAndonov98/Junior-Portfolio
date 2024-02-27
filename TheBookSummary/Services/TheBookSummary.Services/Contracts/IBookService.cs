@@ -10,4 +10,6 @@ public interface IBookService
     Task<IEnumerable<BookViewModel>> GetAllBooksAsync();
 
     Task AddBookAsync(BookInputModel inputModel);
+
+    Task<BookViewModel> RetrieveSingleBook(string id);
 }
