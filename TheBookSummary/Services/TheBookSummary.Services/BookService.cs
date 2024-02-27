@@ -1,3 +1,5 @@
+using AutoMapper.QueryableExtensions;
+
 namespace TheBookSummary.Services;
 
 using System.Collections.Generic;
@@ -36,12 +38,12 @@ public class BookService : IBookService
     /// <returns>A collection of <see cref="BookViewModel"/> representing all books.</returns>
     public async Task<IEnumerable<BookViewModel>> GetAllBooksAsync()
     {
-         var books = await this._repository
-             .AllAsNoTracking()
-             .ToArrayAsync();
+        var books = await this._repository
+            .AllAsNoTracking()
+            .ProjectTo<BookViewModel>(this._mapper.ConfigurationProvider)
+            .ToArrayAsync();
 
         // If automapping breaks try manual
-         var bookViewModels = this._mapper.Map<IEnumerable<BookViewModel>>(books);
 
         // manual mapping
         // var bookViewModels = await this._repository
@@ -64,7 +66,7 @@ public class BookService : IBookService
         //             .ToArray(),
         //     })
         //     .ToArrayAsync();
-         return bookViewModels;
+         return books;
     }
 
     /// <summary>
@@ -75,27 +77,35 @@ public class BookService : IBookService
     public async Task AddBookAsync(BookInputModel inputModel)
     {
         // Automapping
-        // var book = this._mapper.Map<Book>(inputModel);
-        //
-        // await this._repository.AddAsync(book);
-        // await this._repository.SaveChangesAsync();
+        var book = this._mapper.Map<Book>(inputModel);
+        await this._repository.AddAsync(book);
+        await this._repository.SaveChangesAsync();
 
         // manual mapping
-         var newSummary = new BookSummary()
-         {
-             ShortSummary = inputModel.Summary.ShortSummary,
-             FullSummary = inputModel.Summary.FullSummary,
-         };
-        
-         var newBook = new Book()
-         {
-             BookName = inputModel.BookName,
-             BookSummary = newSummary,
-             Ratings = new List<Rating>(),
-             Comments = new List<Comment>(),
-         };
-        
-         await this._repository.AddAsync(newBook);
-        await this._repository.SaveChangesAsync();
+        //  var newSummary = new BookSummary()
+        //  {
+        //      ShortSummary = inputModel.Summary.ShortSummary,
+        //      FullSummary = inputModel.Summary.FullSummary,
+        //  };
+        //
+        //  var newBook = new Book()
+        //  {
+        //      BookName = inputModel.BookName,
+        //      BookSummary = newSummary,
+        //      Ratings = new List<Rating>(),
+        //      Comments = new List<Comment>(),
+        //  };
+        //
+        //  await this._repository.AddAsync(newBook);
+        // await this._repository.SaveChangesAsync();
+    }
+
+    public async Task<BookViewModel> RetrieveSingleBook(string id)
+    {
+        var book = await this._repository.Find(book => book.Id == id)
+            .ProjectTo<BookViewModel>(this._mapper.ConfigurationProvider)
+            .FirstOrDefaultAsync();
+
+        return book;
     }
 }
