@@ -27,15 +27,20 @@ public class BookController : BaseController
         try
         {
             var bookViewModels = await this._bookService.GetAllBooksAsync();
-            ViewBag.Books = bookViewModels;
+
+            if (!ModelState.IsValid)
+            {
+                throw new InvalidOperationException();
+            }
+
+            this._logger.LogInformation("Displaying summaries");
+            return View(bookViewModels);
         }
         catch (Exception e)
         {
             this._logger.LogError("EventController/Index", e);
             return View("Error", new ErrorViewModel());
         }
-
-        return View();
     }
 
     [HttpGet]
@@ -49,6 +54,11 @@ public class BookController : BaseController
     {
         try
         {
+            if (!ModelState.IsValid)
+            {
+                throw new InvalidOperationException();
+            }
+
             await this._bookService.AddBookAsync(inputModel);
 
             this._logger.LogInformation("New book added to database!");
