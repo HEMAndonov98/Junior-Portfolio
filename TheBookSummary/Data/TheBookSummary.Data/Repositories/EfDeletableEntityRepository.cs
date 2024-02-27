@@ -2,9 +2,11 @@
 {
     using System;
     using System.Linq;
+    using System.Linq.Expressions;
+
+    using Microsoft.EntityFrameworkCore;
     using TheBookSummary.Data.Common.Models;
     using TheBookSummary.Data.Common.Repositories;
-    using Microsoft.EntityFrameworkCore;
 
     public class EfDeletableEntityRepository<TEntity> : EfRepository<TEntity>, IDeletableEntityRepository<TEntity>
         where TEntity : class, IDeletableEntity
@@ -21,6 +23,9 @@
         public IQueryable<TEntity> AllWithDeleted() => base.All().IgnoreQueryFilters();
 
         public IQueryable<TEntity> AllAsNoTrackingWithDeleted() => base.AllAsNoTracking().IgnoreQueryFilters();
+
+        public IQueryable<TEntity> Find(Expression<Func<TEntity, bool>> filter)
+            => base.DbSet.Where(filter);
 
         public void HardDelete(TEntity entity) => base.Delete(entity);
 
