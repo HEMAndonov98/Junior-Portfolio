@@ -1,6 +1,8 @@
 ﻿namespace TheBookSummary.Data.Common.Repositories
 {
+    using System;
     using System.Linq;
+    using System.Linq.Expressions;
     using TheBookSummary.Data.Common.Models;
 
     public interface IDeletableEntityRepository<TEntity> : IRepository<TEntity>
@@ -9,6 +11,8 @@
         IQueryable<TEntity> AllWithDeleted();
 
         IQueryable<TEntity> AllAsNoTrackingWithDeleted();
+
+        IQueryable<TEntity> Find(Expression<Func<TEntity, bool>> filter);
 
         void HardDelete(TEntity entity);
 
