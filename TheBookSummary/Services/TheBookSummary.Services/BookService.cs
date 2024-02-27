@@ -1,13 +1,11 @@
-using AutoMapper.QueryableExtensions;
-
 namespace TheBookSummary.Services;
 
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
-
 using TheBookSummary.Data.Common.Repositories;
 using TheBookSummary.Data.Models.MyBookSummary_Models;
 using TheBookSummary.Services.Contracts;
