@@ -8,7 +8,7 @@
     {
         public IActionResult Index()
         {
-            return this.View();
+            return this.RedirectToAction("Index", "Book");
         }
 
         public IActionResult Privacy()
