@@ -1,6 +1,7 @@
+using AutoMapper;
+
 namespace TheBookSummary.Web.ViewModels.Book;
 
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 using TheBookSummary.Common.ViewModelConstraints;
@@ -10,7 +11,7 @@ using TheBookSummary.Services.Mapping;
 /// <summary>
 /// Represents an input model for creating or updating a book.
 /// </summary>
-public class BookInputModel : IMapTo<Book>
+public class BookInputModel : IMapTo<Book>, IHaveCustomMappings
 {
     /// <summary>
     /// Gets or sets the name of the book.
@@ -30,13 +31,12 @@ public class BookInputModel : IMapTo<Book>
     /// </summary>
     public BookSummaryInputModel Summary { get; set; }
 
-    /// <summary>
-    /// Gets or sets the collection of rating input models for the book.
-    /// </summary>
-    public ICollection<Rating> Ratings { get; set; }
-
-    /// <summary>
-    /// Gets or sets the collection of comment input models for the book.
-    /// </summary>
-    public ICollection<Comment> Comments { get; set; }
+    public void CreateMappings(IProfileExpression configuration)
+    {
+        configuration.CreateMap<BookInputModel, Book>()
+            .ForMember(
+                dst => dst.BookSummary,
+                opt => opt.MapFrom(
+                    src => src.Summary));
+    }
 }
