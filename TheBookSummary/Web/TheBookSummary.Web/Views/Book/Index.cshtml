@@ -1,4 +1,6 @@
-@model IEnumerable<TheBookSummary.Web.ViewModels.Book.BookViewModel>
+@using TheBookSummary.Web.ViewModels.Book
+
+@model IEnumerable<BookViewModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -12,30 +14,33 @@
                 @Html.DisplayNameFor(model => model.BookName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ShortSummary)
+                @Html.DisplayNameFor(model => model.Summary.ShortSummary)
             </th>
              <th>
-                 @Html.DisplayNameFor(model => model.FullSummary)
+                 @Html.DisplayNameFor(model => model.Summary.FullSummary)
              </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var book in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.BookName)
+                @Html.DisplayFor(modelItem => book.BookName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ShortSummary)
+                @Html.DisplayFor(modelItem => book.Summary.ShortSummary)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FullSummary)
+                @Html.DisplayFor(modelItem => book.Summary.FullSummary)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StarsRating)
-            </td>
-        </tr>
+            @if (book.StarsRating != null)
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => book.StarsRating)
+                </td>
+            }
+    </tr>
 }
     </tbody>
-</table>
+</table> 
