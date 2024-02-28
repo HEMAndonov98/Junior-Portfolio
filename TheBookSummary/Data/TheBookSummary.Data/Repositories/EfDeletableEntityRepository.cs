@@ -25,7 +25,13 @@
         public IQueryable<TEntity> AllAsNoTrackingWithDeleted() => base.AllAsNoTracking().IgnoreQueryFilters();
 
         public IQueryable<TEntity> Find(Expression<Func<TEntity, bool>> filter)
-            => base.DbSet.Where(filter);
+            => this.DbSet.Where(filter);
+        
+        public IQueryable<TEntity> FindIncluding<TProperty>(
+            Expression<Func<TEntity, TProperty>> includeExpression,
+            Expression<Func<TEntity, bool>> filter)
+            => this.DbSet.Include(includeExpression)
+                .Where(filter);
 
         public void HardDelete(TEntity entity) => base.Delete(entity);
 

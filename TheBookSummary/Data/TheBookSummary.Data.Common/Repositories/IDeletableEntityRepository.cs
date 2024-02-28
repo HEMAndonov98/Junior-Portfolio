@@ -14,6 +14,10 @@
 
         IQueryable<TEntity> Find(Expression<Func<TEntity, bool>> filter);
 
+        public IQueryable<TEntity> FindIncluding<TProperty>(
+            Expression<Func<TEntity, TProperty>> includeExpression,
+            Expression<Func<TEntity, bool>> filter);
+
         void HardDelete(TEntity entity);
 
         void Undelete(TEntity entity);
