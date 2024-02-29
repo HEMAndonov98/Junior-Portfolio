@@ -1,6 +1,6 @@
 namespace TheBookSummary.Services;
 
-using System.Linq;
+using System;
 using System.Threading.Tasks;
 
 using AutoMapper;
@@ -46,6 +46,19 @@ public class RatingService : IRatingService
 
     public async Task EditBookRating(string bookId, RatingInputModel ratingInputModel)
     {
-        throw new System.NotImplementedException();
+        var existingRating = await this._repository.All()
+            .Include(r => r.Book)
+            .Include(r => r.ApplicationUser)
+            .FirstOrDefaultAsync(r => r.BookId == bookId && r.ApplicationUser.Id == ratingInputModel.UserId);
+
+        if (existingRating == null)
+        {
+            throw new NullReferenceException();
+        }
+
+        var editedRating = this._mapper.Map<Rating>(ratingInputModel);
+
+        this._repository.Update(editedRating);
+        await this._repository.SaveChangesAsync();
     }
 }
