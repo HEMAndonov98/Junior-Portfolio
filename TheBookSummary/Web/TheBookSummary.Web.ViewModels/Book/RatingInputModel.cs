@@ -12,6 +12,11 @@ using TheBookSummary.Services.Mapping;
 public class RatingInputModel : IMapTo<Rating>
 {
     /// <summary>
+    /// Gets or sets the id of the given rating
+    /// </summary>
+    public string Id { get; set; }
+    
+    /// <summary>
     /// Gets or sets the rating given to the book.
     /// </summary>
     [Display(Name ="Rating")]
