@@ -2,45 +2,39 @@
 
 @model IEnumerable<BookViewModel>
 
-@{
-    ViewData["Title"] = "Index";
-}
-
-<h1>Index</h1>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.BookName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Summary.ShortSummary)
-            </th>
-             <th>
-                 @Html.DisplayNameFor(model => model.Summary.FullSummary)
-             </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+<head>
+	    <link rel="stylesheet" href="~/css/MainPage.css" asp-append-version="true"/>
+</head>
+<h1>Summaries</h1>
 @foreach (var book in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => book.BookName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => book.Summary.ShortSummary)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => book.Summary.FullSummary)
-            </td>
-            @if (book.StarsRating != null)
-            {
-                <td>
-                    @Html.DisplayFor(modelItem => book.StarsRating)
-                </td>
-            }
-    </tr>
+    <section>
+        <div class="card-container">
+            <div class="card">
+                <div class="card-front">
+                    <h2 class="d-flex align-self-end">@Html.DisplayFor(modelItem => book.BookName)</h2>
+                </div>
+                <div class="card-back">
+                    <p>@Html.DisplayFor(modelItem => book.Summary.ShortSummary)</p>
+                    <a class="btn btn-outline-light" >View Summary</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    @*     <tr> *@
+    @*         <td> *@
+    @*             @Html.DisplayFor(modelItem => book.BookName) *@
+    @*         </td> *@
+    @*         <td> *@
+    @*             @Html.DisplayFor(modelItem => book.Summary.ShortSummary) *@
+    @*         </td> *@
+    @*         <td> *@
+    @*             @Html.DisplayFor(modelItem => book.Summary.FullSummary) *@
+    @*         </td> *@
+    @*         @if (book.StarsRating != null) *@
+    @*         { *@
+    @*             <td> *@
+    @*                 @Html.DisplayFor(modelItem => book.StarsRating) *@
+    @*             </td> *@
+    @*         } *@
+    @* </tr> *@
 }
-    </tbody>
-</table> 
