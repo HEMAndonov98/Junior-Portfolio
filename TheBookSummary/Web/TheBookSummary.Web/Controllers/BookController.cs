@@ -71,4 +71,27 @@ public class BookController : BaseController
 
         return Ok();
     }
+
+    [HttpGet]
+    public async Task<IActionResult> Details(string id)
+    {
+
+        try
+        {
+            BookViewModel viewModel = await this._bookService.RetrieveSingleBook(id);
+
+            if (!ModelState.IsValid)
+            {
+                throw new InvalidOperationException();
+            }
+
+            this._logger.LogInformation("Displaying book details");
+            return View(viewModel);
+        }
+        catch (Exception e)
+        {
+            this._logger.LogError("EventController/Details/[HttpGet]", e);
+            return View("Error", new ErrorViewModel());
+        }
+    }
 }
