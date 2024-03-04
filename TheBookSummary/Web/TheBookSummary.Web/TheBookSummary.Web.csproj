@@ -46,8 +46,4 @@
         <ProjectReference Include="..\TheBookSummary.Web.Infrastructure\TheBookSummary.Web.Infrastructure.csproj"/>
         <ProjectReference Include="..\TheBookSummary.Web.ViewModels\TheBookSummary.Web.ViewModels.csproj"/>
     </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Views\Book\" />
-    </ItemGroup>
 </Project>
