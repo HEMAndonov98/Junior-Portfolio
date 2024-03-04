@@ -1,13 +1,10 @@
-using AutoMapper;
-
 namespace TheBookSummary.Web.ViewModels.Book
 {
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    using TheBookSummary.Services.Mapping;
-
+    using AutoMapper;
     using TheBookSummary.Data.Models.MyBookSummary_Models;
+    using TheBookSummary.Services.Mapping;
 
     /// <summary>
     /// Represents a view model for displaying book information.

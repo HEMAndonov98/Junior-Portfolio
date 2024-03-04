@@ -6,35 +6,42 @@
 	    <link rel="stylesheet" href="~/css/MainPage.css" asp-append-version="true"/>
 </head>
 <h1>Summaries</h1>
+ <div class="row">
 @foreach (var book in Model) {
-    <section>
-        <div class="card-container">
-            <div class="card">
-                <div class="card-front">
-                    <h2 class="d-flex align-self-end">@Html.DisplayFor(modelItem => book.BookName)</h2>
+    @* <section> *@
+    @*     <div class="card-container"> *@
+    @*         <div class="card"> *@
+    @*             <div class="card-front"> *@
+    @*                 <h2 class="d-flex align-self-end">@Html.DisplayFor(modelItem => book.BookName)</h2> *@
+    @*             </div> *@
+    @*             <div class="card-back"> *@
+    @*                 <p>@Html.DisplayFor(modelItem => book.Summary.ShortSummary)</p> *@
+    @*                 <a class="btn btn-outline-light" asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">View Summary</a> *@
+    @*             </div> *@
+    @*         </div> *@
+    @*     </div> *@
+    @* </section> *@
+    <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+            <div class="mainflip">
+                <div class="frontside">
+                    <div class="card">
+                        <img class=" img-fluid" src="https://mdbootstrap.com/img/new/standard/city/059.jpg" alt="card image">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">@Html.DisplayFor(modelItem => book.BookName)</h4>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-back">
-                    <p>@Html.DisplayFor(modelItem => book.Summary.ShortSummary)</p>
-                    <a class="btn btn-outline-light" >View Summary</a>
+                <div class="backside">
+                    <div class="card align-items-center">
+                        <div class="card-body text-center mt-4">
+                            <p class="card-text overflow-auto">@Html.DisplayFor(modelItem => book.Summary.ShortSummary)</p>
+                        </div>
+                            <a class="btn-primary" asp-controller="Book" asp-action="Details">View Data</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-    @*     <tr> *@
-    @*         <td> *@
-    @*             @Html.DisplayFor(modelItem => book.BookName) *@
-    @*         </td> *@
-    @*         <td> *@
-    @*             @Html.DisplayFor(modelItem => book.Summary.ShortSummary) *@
-    @*         </td> *@
-    @*         <td> *@
-    @*             @Html.DisplayFor(modelItem => book.Summary.FullSummary) *@
-    @*         </td> *@
-    @*         @if (book.StarsRating != null) *@
-    @*         { *@
-    @*             <td> *@
-    @*                 @Html.DisplayFor(modelItem => book.StarsRating) *@
-    @*             </td> *@
-    @*         } *@
-    @* </tr> *@
+    </div>
 }
+</div>
