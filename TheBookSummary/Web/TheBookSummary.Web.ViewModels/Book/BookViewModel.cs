@@ -43,7 +43,11 @@ namespace TheBookSummary.Web.ViewModels.Book
                 .ForMember(
                     dst => dst.Summary,
                     opt => opt.MapFrom(
-                        src => src.BookSummary));
+                        src => src.BookSummary))
+                .ForMember(
+                dst => dst.Id,
+                opt => opt.MapFrom(
+                    src => src.Id));
         }
     }
 }
