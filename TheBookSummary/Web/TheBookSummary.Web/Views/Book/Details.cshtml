@@ -3,28 +3,43 @@
 @{
     ViewData["Title"] = "Details";
 }
-
-<h1>Details</h1>
-
 <div>
-    <h4>Book</h4>
+    <h4>@Model.BookName</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BookName)
+        <dt class="col-sm-2">
+            Summary
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BookName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Summary.FullSummary)
-        </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Summary.FullSummary)
-            </dd>
+        </dd>
+        <dt class="col-sm-2">
+            Rate
+        </dt>
+        <dd class="col-sm">
+            <span class="text-warning">
+                <i class="ratingStar fa fa-star-o"></i>
+                <i class="ratingStar fa fa-star-o"></i>
+                <i class="ratingStar fa fa-star-o"></i>
+                <i class="ratingStar fa fa-star-o"></i>
+            </span>
+        </dd>
     </dl>
 </div>
 <div>
     @* <a asp-action="Discussion" asp-route-id="@Model?.Id">Edit</a> | *@
     <a asp-action="Index">Back to List</a>
 </div>
+
+@section Scripts{
+        <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
+<script>
+    $(".ratingStar").hover(function (){
+        $("span").css("cursor", "pointer");
+        $(".ratingStar").addClass("fa-star-o").removeClass("fa-star");
+
+        $(this).addClass("fa-star").removeClass("fa-star-o");
+        $(this).prevAll(".ratingStar").addClass("fa-star").removeClass("fa-star-o");
+    });
+ </script>
+ }
