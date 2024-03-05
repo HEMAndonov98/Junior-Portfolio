@@ -52,7 +52,7 @@
 
             AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
             services.AddSingleton<IMapper>(AutoMapperConfig.MapperInstance);
-            
+
             services.AddControllersWithViews(
                     options => { options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()); })
                 .AddRazorRuntimeCompilation();
