@@ -1,5 +1,6 @@
 namespace TheBookSummary.Services;
 
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -100,6 +101,11 @@ public class BookService : IBookService
 
     public async Task<BookViewModel> RetrieveSingleBook(string id)
     {
+        if (string.IsNullOrWhiteSpace(id))
+        {
+            throw new ArgumentNullException();
+        }
+
         var book = await this._repository.Find(book => book.Id == id)
             .ProjectTo<BookViewModel>(this._mapper.ConfigurationProvider)
             .FirstOrDefaultAsync();
