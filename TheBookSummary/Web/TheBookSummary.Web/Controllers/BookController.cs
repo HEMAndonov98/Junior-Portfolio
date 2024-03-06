@@ -86,7 +86,7 @@ public class BookController : BaseController
             }
 
             this._logger.LogInformation("Displaying book details");
-            return View(viewModel);
+            return this.View(viewModel);
         }
         catch (Exception e)
         {
