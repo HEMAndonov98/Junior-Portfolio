@@ -10,6 +10,7 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+
     using TheBookSummary.Data;
     using TheBookSummary.Data.Common;
     using TheBookSummary.Data.Common.Repositories;
@@ -60,15 +61,18 @@
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddSingleton(configuration);
+            services.AddHttpContextAccessor();
 
             // Data repositories
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddScoped(typeof(IDeletableEntityRepository<Book>), typeof(EfDeletableEntityRepository<Book>));
+            services.AddScoped(typeof(IDeletableEntityRepository<Rating>), typeof(EfDeletableEntityRepository<Rating>));
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
             // Application services
             services.AddTransient<IBookService, BookService>();
+            services.AddTransient<IRatingService, RatingService>();
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
         }
