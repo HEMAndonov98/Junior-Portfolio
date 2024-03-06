@@ -1,11 +1,18 @@
 namespace TheBookSummary.Services;
 
 using System;
+using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 using AutoMapper;
+
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+
 using TheBookSummary.Data.Common.Repositories;
+using TheBookSummary.Data.Models.Identity;
 using TheBookSummary.Data.Models.MyBookSummary_Models;
 using TheBookSummary.Services.Contracts;
 using TheBookSummary.Web.ViewModels.Book;
@@ -15,14 +22,29 @@ public class RatingService : IRatingService
     private readonly IDeletableEntityRepository<Rating> _repository;
     private readonly IMapper _mapper;
 
-    public RatingService(IDeletableEntityRepository<Rating> repository, IMapper mapper)
+    private readonly IHttpContextAccessor _httpContext;
+
+    private readonly UserManager<ApplicationUser> _userManager;
+
+    public RatingService(IDeletableEntityRepository<Rating> repository, IMapper mapper, IHttpContextAccessor httpContextAccessor, UserManager<ApplicationUser> userManager)
     {
         this._repository = repository;
         this._mapper = mapper;
+        this._httpContext = httpContextAccessor;
+        this._userManager = userManager;
     }
 
     public async Task AddBookRating(string bookId, RatingInputModel ratingInputModel)
     {
+        string userId = this._userManager.GetUserId(this._httpContext.HttpContext.User);
+
+        if (string.IsNullOrEmpty(userId))
+        {
+            throw new ArgumentNullException();
+        }
+
+        ratingInputModel.UserId = userId;
+
         var existingRating = await this._repository.AllAsNoTracking()
             .Include(r => r.Book)
             .Include(r => r.ApplicationUser)
@@ -30,7 +52,7 @@ public class RatingService : IRatingService
 
         if (existingRating != null)
         {
-             await this.EditBookRating(bookId, ratingInputModel);
+            await this.EditBookRating(bookId, ratingInputModel);
         }
         else
         {
