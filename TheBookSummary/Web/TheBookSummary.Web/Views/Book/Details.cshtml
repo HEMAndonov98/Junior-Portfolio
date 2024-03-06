@@ -1,4 +1,6 @@
-@model TheBookSummary.Web.ViewModels.Book.BookViewModel
+﻿@model TheBookSummary.Web.ViewModels.Book.BookViewModel
+
+@using TheBookSummary.Web.ViewModels.Book
 
 @{
     ViewData["Title"] = "Details";
@@ -18,8 +20,16 @@
         </dt>
         <div class="col-sm-10">
             @{
-                var model = new TheBookSummary.Web.ViewModels.Book.RatingInputModel();
-                await this.Html.RenderPartialAsync("RatingPartial", model);
+                await this.Html.RenderPartialAsync("RatingPartial", new RatingInputModel() { BookId = Model.Id });
+            }
+        </div>
+        <dt class="col-sm-2">
+            Overall rating
+        </dt>
+        <div class="col-sm-10">
+            @* rating partial view *@
+            @{
+                await this.Html.RenderPartialAsync("RatingsView");
             }
         </div>
     </dl>
@@ -33,7 +43,7 @@
     <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
     <script>
         $(".ratingStar").hover(function () {
-            $("span").css("cursor", "pointer");
+            $(".ratingStar").css("cursor", "pointer");
             $(".ratingStar").addClass("fa-star-o").removeClass("fa-star");
 
             $(this).addClass("fa-star").removeClass("fa-star-o");
@@ -45,6 +55,7 @@
                 var radioId = $(this).attr("for");
                 $("input[type= 'radio']").prop("checked", false);
                 $("#" + radioId).prop("checked", true);
+                $("#RatingsForm").submit();
             })
         })
     </script>

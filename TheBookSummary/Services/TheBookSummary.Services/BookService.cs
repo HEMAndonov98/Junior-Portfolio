@@ -39,6 +39,7 @@ public class BookService : IBookService
     {
         var books = await this._repository
             .AllAsNoTracking()
+            .Include(b => b.Ratings)
             .ProjectTo<BookViewModel>(this._mapper.ConfigurationProvider)
             .ToArrayAsync();
 

@@ -38,7 +38,7 @@ public class BookController : BaseController
         }
         catch (Exception e)
         {
-            this._logger.LogError("EventController/Index", e);
+            this._logger.LogError("BookController/Index", e);
             return View("Error", new ErrorViewModel());
         }
     }
@@ -90,7 +90,7 @@ public class BookController : BaseController
         }
         catch (Exception e)
         {
-            this._logger.LogError("EventController/Details/[HttpGet]", e);
+            this._logger.LogError("BookController/Details/[HttpGet]", e);
             return View("Error", new ErrorViewModel());
         }
     }

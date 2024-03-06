@@ -1,6 +1,6 @@
 ﻿@model TheBookSummary.Web.ViewModels.Book.RatingInputModel
 
-@using (Html.BeginForm("Rate", "Rating", FormMethod.Post))
+@using (Html.BeginForm("Rate", "Rating", FormMethod.Post, new { Id = "RatingsForm" }))
 {
     <span class=" text-warning">
     <label class="ratingStar fa fa-star-o" for="star1"></label>
@@ -19,7 +19,7 @@
     <input type="radio" id="star5" value=10 asp-for="Stars" hidden />
 
 </span>
-    <div class="container">
-    <input class="btn btn-primary" type="submit" value="Submit" />
+    <div class="container position-relative">
+    <input class="btn btn-primary hiddenButtonSubmit" type="submit" value="Submit" hidden />
 </div>
 }

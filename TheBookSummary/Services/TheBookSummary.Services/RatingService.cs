@@ -34,9 +34,14 @@ public class RatingService : IRatingService
         this._userManager = userManager;
     }
 
-    public async Task AddBookRating(string bookId, RatingInputModel ratingInputModel)
+    public async Task AddBookRating(RatingInputModel ratingInputModel)
     {
         string userId = this._userManager.GetUserId(this._httpContext.HttpContext.User);
+
+        if (string.IsNullOrWhiteSpace(ratingInputModel.BookId))
+        {
+            throw new ArgumentNullException();
+        }
 
         if (string.IsNullOrEmpty(userId))
         {
@@ -48,11 +53,11 @@ public class RatingService : IRatingService
         var existingRating = await this._repository.AllAsNoTracking()
             .Include(r => r.Book)
             .Include(r => r.ApplicationUser)
-            .FirstOrDefaultAsync(r => r.BookId == bookId && r.ApplicationUser.Id == ratingInputModel.UserId);
+            .FirstOrDefaultAsync(r => r.BookId == ratingInputModel.BookId && r.ApplicationUser.Id == ratingInputModel.UserId);
 
         if (existingRating != null)
         {
-            await this.EditBookRating(bookId, ratingInputModel);
+            await this.EditBookRating(ratingInputModel.BookId, ratingInputModel);
         }
         else
         {

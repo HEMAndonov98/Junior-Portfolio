@@ -1,5 +1,6 @@
 ﻿namespace TheBookSummary.Web;
 
+using System;
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Mvc;
@@ -21,10 +22,25 @@ public class RatingController : BaseController
         this._logger = logger;
     }
 
+    [HttpPost]
     public async Task<IActionResult> Rate(RatingInputModel ratingInputModel)
     {
-        await this._ratingService.AddBookRating("1", ratingInputModel);
 
-        return this.Ok();
+        try
+        {
+            if (!this.ModelState.IsValid)
+            {
+                throw new InvalidOperationException();
+            }
+            await this._ratingService.AddBookRating(ratingInputModel);
+            this._logger.LogInformation("Rating successfuly added!");
+
+            return this.RedirectToAction(nameof(BookController.Details), nameof(BookController));
+        }
+        catch (Exception e)
+        {
+            this._logger.LogError("RatingController/Rate/[HttpPost]", e);
+            return this.RedirectToAction(nameof(BookController.Details), nameof(BookController), ratingInputModel.BookId);
+        }
     }
 }

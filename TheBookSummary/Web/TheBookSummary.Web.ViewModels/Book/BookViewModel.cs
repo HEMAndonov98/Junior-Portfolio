@@ -1,8 +1,10 @@
 namespace TheBookSummary.Web.ViewModels.Book
 {
     using System.ComponentModel.DataAnnotations;
+    using System.Linq;
 
     using AutoMapper;
+
     using TheBookSummary.Data.Models.MyBookSummary_Models;
     using TheBookSummary.Services.Mapping;
 
@@ -31,7 +33,7 @@ namespace TheBookSummary.Web.ViewModels.Book
         /// Gets or sets the rating of the book.
         /// </summary>
         [Display(Name = "Rating")]
-        public int StarsRating { get; set; }
+        public double StarsRating { get; set; }
 
         /// <summary>
         /// Custom mapping configuration for the book view model.
