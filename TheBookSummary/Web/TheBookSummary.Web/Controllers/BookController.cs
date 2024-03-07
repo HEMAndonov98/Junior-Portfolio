@@ -69,13 +69,12 @@ public class BookController : BaseController
             return View("Error", new ErrorViewModel());
         }
 
-        return Ok();
+        return this.RedirectToAction(nameof(this.Index));
     }
 
     [HttpGet]
     public async Task<IActionResult> Details(string id)
     {
-
         try
         {
             BookViewModel viewModel = await this._bookService.RetrieveSingleBook(id);
