@@ -12,34 +12,34 @@ using TheBookSummary.Web.ViewModels.Book;
 
 public class RatingController : BaseController
 {
-    private readonly IRatingService _ratingService;
+    private readonly IRatingService ratingService;
 
-    private readonly ILogger _logger;
+    private readonly ILogger logger;
 
     public RatingController(IRatingService ratingService, ILogger<RatingController> logger)
     {
-        this._ratingService = ratingService;
-        this._logger = logger;
+        this.ratingService = ratingService;
+        this.logger = logger;
     }
 
     [HttpPost]
     public async Task<IActionResult> Rate(RatingInputModel ratingInputModel)
     {
-
         try
         {
             if (!this.ModelState.IsValid)
             {
                 throw new InvalidOperationException();
             }
-            await this._ratingService.AddBookRating(ratingInputModel);
-            this._logger.LogInformation("Rating successfuly added!");
+
+            await this.ratingService.AddBookRating(ratingInputModel);
+            this.logger.LogInformation("Rating successfuly added!");
 
             return this.RedirectToAction(nameof(BookController.Details), nameof(BookController));
         }
         catch (Exception e)
         {
-            this._logger.LogError("RatingController/Rate/[HttpPost]", e);
+            this.logger.LogError("RatingController/Rate/[HttpPost]", e);
             return this.RedirectToAction(nameof(BookController.Details), nameof(BookController), ratingInputModel.BookId);
         }
     }

@@ -4,10 +4,10 @@ namespace TheBookSummary.Data.Models.Identity
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    
+
     using Microsoft.EntityFrameworkCore;
     using Microsoft.AspNetCore.Identity;
-    
+
     using TheBookSummary.Data.Common.Models;
     using TheBookSummary.Common.Database_Model_Constraints;
 
@@ -26,8 +26,7 @@ namespace TheBookSummary.Data.Models.Identity
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
         }
-        
-        //User
+
         /// <summary>
         /// Gets or sets the first name of the user.
         /// </summary>
@@ -54,7 +53,6 @@ namespace TheBookSummary.Data.Models.Identity
         [Comment("Number of ratings given by the user.")]
         public int RatingsGiven { get; set; }
 
-        // Audit info
         /// <summary>
         /// Gets or sets the date and time when the user was created.
         /// </summary>
@@ -67,7 +65,6 @@ namespace TheBookSummary.Data.Models.Identity
         [Comment("Date and time when the user was last modified.")]
         public DateTime? ModifiedOn { get; set; }
 
-        // Deletable entity
         /// <summary>
         /// Gets or sets a value indicating whether the user is deleted.
         /// </summary>

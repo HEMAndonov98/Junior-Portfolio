@@ -2,7 +2,7 @@
 {
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
-    
+
     using TheBookSummary.Data.Models.Identity;
 
     public class ApplicationUserConfiguration : IEntityTypeConfiguration<ApplicationUser>

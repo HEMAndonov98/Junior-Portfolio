@@ -3,12 +3,13 @@
     using System;
     using System.Linq;
     using System.Threading.Tasks;
-    
+
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;
-    
+
     using TheBookSummary.Common;
     using TheBookSummary.Data.Models.Identity;
+
     internal class RolesSeeder : ISeeder
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)

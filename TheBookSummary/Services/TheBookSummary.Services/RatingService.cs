@@ -1,8 +1,6 @@
 namespace TheBookSummary.Services;
 
 using System;
-using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 
 using AutoMapper;
@@ -19,24 +17,24 @@ using TheBookSummary.Web.ViewModels.Book;
 
 public class RatingService : IRatingService
 {
-    private readonly IDeletableEntityRepository<Rating> _repository;
-    private readonly IMapper _mapper;
+    private readonly IDeletableEntityRepository<Rating> repository;
+    private readonly IMapper mapper;
 
-    private readonly IHttpContextAccessor _httpContext;
+    private readonly IHttpContextAccessor httpContext;
 
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly UserManager<ApplicationUser> userManager;
 
     public RatingService(IDeletableEntityRepository<Rating> repository, IMapper mapper, IHttpContextAccessor httpContextAccessor, UserManager<ApplicationUser> userManager)
     {
-        this._repository = repository;
-        this._mapper = mapper;
-        this._httpContext = httpContextAccessor;
-        this._userManager = userManager;
+        this.repository = repository;
+        this.mapper = mapper;
+        this.httpContext = httpContextAccessor;
+        this.userManager = userManager;
     }
 
     public async Task AddBookRating(RatingInputModel ratingInputModel)
     {
-        string userId = this._userManager.GetUserId(this._httpContext.HttpContext.User);
+        string userId = this.userManager.GetUserId(this.httpContext.HttpContext.User);
 
         if (string.IsNullOrWhiteSpace(ratingInputModel.BookId))
         {
@@ -50,7 +48,7 @@ public class RatingService : IRatingService
 
         ratingInputModel.UserId = userId;
 
-        var existingRating = await this._repository.AllAsNoTracking()
+        var existingRating = await this.repository.AllAsNoTracking()
             .Include(r => r.Book)
             .Include(r => r.ApplicationUser)
             .FirstOrDefaultAsync(r => r.BookId == ratingInputModel.BookId && r.ApplicationUser.Id == ratingInputModel.UserId);
@@ -61,16 +59,16 @@ public class RatingService : IRatingService
         }
         else
         {
-            var rating = this._mapper.Map<Rating>(ratingInputModel);
+            var rating = this.mapper.Map<Rating>(ratingInputModel);
 
-            await this._repository.AddAsync(rating);
-            await this._repository.SaveChangesAsync();
+            await this.repository.AddAsync(rating);
+            await this.repository.SaveChangesAsync();
         }
     }
 
     public async Task EditBookRating(string bookId, RatingInputModel ratingInputModel)
     {
-        var existingRating = await this._repository.All()
+        var existingRating = await this.repository.All()
             .Include(r => r.Book)
             .Include(r => r.ApplicationUser)
             .FirstOrDefaultAsync(r => r.BookId == bookId && r.ApplicationUser.Id == ratingInputModel.UserId);
@@ -80,9 +78,9 @@ public class RatingService : IRatingService
             throw new NullReferenceException();
         }
 
-        var editedRating = this._mapper.Map<Rating>(ratingInputModel);
+        var editedRating = this.mapper.Map<Rating>(ratingInputModel);
 
-        this._repository.Update(editedRating);
-        await this._repository.SaveChangesAsync();
+        this.repository.Update(editedRating);
+        await this.repository.SaveChangesAsync();
     }
 }

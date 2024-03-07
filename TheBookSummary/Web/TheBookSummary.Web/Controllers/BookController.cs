@@ -12,13 +12,13 @@ using TheBookSummary.Web.ViewModels.Book;
 
 public class BookController : BaseController
 {
-    private readonly IBookService _bookService;
-    private readonly ILogger _logger;
+    private readonly IBookService bookService;
+    private readonly ILogger logger;
 
     public BookController(IBookService bookService, ILogger<BookController> logger)
     {
-        this._bookService = bookService;
-        this._logger = logger;
+        this.bookService = bookService;
+        this.logger = logger;
     }
 
     [HttpGet]
@@ -26,27 +26,27 @@ public class BookController : BaseController
     {
         try
         {
-            var bookViewModels = await this._bookService.GetAllBooksAsync();
+            var bookViewModels = await this.bookService.GetAllBooksAsync();
 
-            if (!ModelState.IsValid)
+            if (!this.ModelState.IsValid)
             {
                 throw new InvalidOperationException();
             }
 
-            this._logger.LogInformation("Displaying summaries");
-            return View(bookViewModels);
+            this.logger.LogInformation("Displaying summaries");
+            return this.View(bookViewModels);
         }
         catch (Exception e)
         {
-            this._logger.LogError("BookController/Index", e);
-            return View("Error", new ErrorViewModel());
+            this.logger.LogError("BookController/Index", e);
+            return this.View("Error", new ErrorViewModel());
         }
     }
 
     [HttpGet]
     public IActionResult Create()
     {
-        return View();
+        return this.View();
     }
 
     [HttpPost]
@@ -54,19 +54,19 @@ public class BookController : BaseController
     {
         try
         {
-            if (!ModelState.IsValid)
+            if (!this.ModelState.IsValid)
             {
                 throw new InvalidOperationException();
             }
 
-            await this._bookService.AddBookAsync(inputModel);
+            await this.bookService.AddBookAsync(inputModel);
 
-            this._logger.LogInformation("New book added to database!");
+            this.logger.LogInformation("New book added to database!");
         }
         catch (Exception e)
         {
-            this._logger.LogError("EventController/Create/[HttpPost]", e);
-            return View("Error", new ErrorViewModel());
+            this.logger.LogError("EventController/Create/[HttpPost]", e);
+            return this.View("Error", new ErrorViewModel());
         }
 
         return this.RedirectToAction(nameof(this.Index));
@@ -77,20 +77,20 @@ public class BookController : BaseController
     {
         try
         {
-            BookViewModel viewModel = await this._bookService.RetrieveSingleBook(id);
+            BookViewModel viewModel = await this.bookService.RetrieveSingleBook(id);
 
-            if (!ModelState.IsValid)
+            if (!this.ModelState.IsValid)
             {
                 throw new InvalidOperationException();
             }
 
-            this._logger.LogInformation("Displaying book details");
+            this.logger.LogInformation("Displaying book details");
             return this.View(viewModel);
         }
         catch (Exception e)
         {
-            this._logger.LogError("BookController/Details/[HttpGet]", e);
-            return View("Error", new ErrorViewModel());
+            this.logger.LogError("BookController/Details/[HttpGet]", e);
+            return this.View("Error", new ErrorViewModel());
         }
     }
 }
