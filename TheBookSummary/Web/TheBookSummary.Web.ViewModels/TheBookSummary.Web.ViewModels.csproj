@@ -9,7 +9,7 @@
         <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
     </PropertyGroup>
     <ItemGroup>
-        <AdditionalFiles Include="..\..\stylecop.json"/>
+        <AdditionalFiles Include="..\..\stylecop.json" />
     </ItemGroup>
 
     <ItemGroup>
@@ -19,8 +19,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Data\TheBookSummary.Data.Models\TheBookSummary.Data.Models.csproj"/>
-        <ProjectReference Include="..\..\Services\TheBookSummary.Services.Mapping\TheBookSummary.Services.Mapping.csproj"/>
+        <ProjectReference Include="..\..\Data\TheBookSummary.Data.Models\TheBookSummary.Data.Models.csproj" />
+        <ProjectReference Include="..\..\Services\TheBookSummary.Services.Mapping\TheBookSummary.Services.Mapping.csproj" />
     </ItemGroup>
 
 </Project>

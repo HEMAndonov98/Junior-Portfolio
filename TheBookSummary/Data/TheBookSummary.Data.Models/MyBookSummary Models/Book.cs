@@ -4,9 +4,9 @@ namespace TheBookSummary.Data.Models.MyBookSummary_Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    
+
     using Microsoft.EntityFrameworkCore;
-    
+
     using TheBookSummary.Common.Database_Model_Constraints;
     using TheBookSummary.Data.Common.Models;
 
@@ -38,7 +38,7 @@ namespace TheBookSummary.Data.Models.MyBookSummary_Models
         [ForeignKey(nameof(BookSummary))]
         [Comment("Foreign key referencing the associated book summary.")]
         public string BookSummaryId { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the navigation property representing the associated book summary.
         /// </summary>
@@ -51,7 +51,7 @@ namespace TheBookSummary.Data.Models.MyBookSummary_Models
         [InverseProperty(nameof(Rating.Book))]
         [Comment("Collection of ratings associated with the book.")]
         public ICollection<Rating> Ratings { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the collection of comments associated with the book.
         /// </summary>

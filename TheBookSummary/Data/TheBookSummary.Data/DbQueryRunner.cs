@@ -2,8 +2,10 @@
 {
     using System;
     using System.Threading.Tasks;
-    using TheBookSummary.Data.Common;
+
     using Microsoft.EntityFrameworkCore;
+
+    using TheBookSummary.Data.Common;
 
     public class DbQueryRunner : IDbQueryRunner
     {

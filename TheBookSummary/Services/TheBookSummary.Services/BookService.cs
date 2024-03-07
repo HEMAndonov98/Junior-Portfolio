@@ -2,6 +2,7 @@ namespace TheBookSummary.Services;
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 using AutoMapper;
@@ -39,7 +40,6 @@ public class BookService : IBookService
     {
         var books = await this._repository
             .AllAsNoTracking()
-            .Include(b => b.Ratings)
             .ProjectTo<BookViewModel>(this._mapper.ConfigurationProvider)
             .ToArrayAsync();
 

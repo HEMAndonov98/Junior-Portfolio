@@ -2,6 +2,7 @@
 
 @using (Html.BeginForm("Rate", "Rating", FormMethod.Post, new { Id = "RatingsForm" }))
 {
+    <input asp-for="@Model.BookId" value="@Model.BookId" hidden />
     <span class=" text-warning">
     <label class="ratingStar fa fa-star-o" for="star1"></label>
     <input type="radio" id="star1" value=2 asp-for="Stars" hidden />

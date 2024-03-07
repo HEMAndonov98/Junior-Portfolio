@@ -21,7 +21,7 @@ public class Rating : BaseDeletableModel<string>
     public Rating()
     {
         // Set a unique identifier for the rating.
-        Id = Guid.NewGuid().ToString();
+        this.Id = Guid.NewGuid().ToString();
     }
 
     /// <summary>

@@ -5,14 +5,14 @@
     using System.Reflection;
     using System.Threading;
     using System.Threading.Tasks;
-    
-    using Microsoft.EntityFrameworkCore;
+
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-    
+    using Microsoft.EntityFrameworkCore;
+
     using TheBookSummary.Data.Common.Models;
+    using TheBookSummary.Data.Models;
     using TheBookSummary.Data.Models.Identity;
     using TheBookSummary.Data.Models.MyBookSummary_Models;
-    using TheBookSummary.Data.Models;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
@@ -27,10 +27,15 @@
         }
 
         public DbSet<Setting> Settings { get; set; }
+
         public DbSet<Book> Books { get; set; }
+
         public DbSet<BookSummary> BookSummaries { get; set; }
+
         public DbSet<Rating> Ratings { get; set; }
+
         public DbSet<Comment> Comments { get; set; }
+
         public DbSet<Reply> Replies { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
