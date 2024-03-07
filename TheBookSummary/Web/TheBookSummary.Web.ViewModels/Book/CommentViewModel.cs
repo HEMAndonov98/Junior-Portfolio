@@ -25,7 +25,7 @@ public class CommentViewModel : IMapFrom<Comment>, IHaveCustomMappings
     /// Gets or sets the collection of reply view models associated with the comment.
     /// </summary>
     public ICollection<CommentViewModel> Replies { get; set; }
-    
+
     /// <summary>
     /// Custom mapping configuration for the comment view model.
     /// </summary>

@@ -1,6 +1,7 @@
 ﻿namespace TheBookSummary.Data
 {
     using System.Linq;
+
     using TheBookSummary.Data.Common.Models;
     using Microsoft.EntityFrameworkCore;
 

@@ -1,6 +1,7 @@
 ﻿namespace TheBookSummary.Web.Controllers
 {
     using System.Diagnostics;
+
     using TheBookSummary.Web.ViewModels;
     using Microsoft.AspNetCore.Mvc;
 

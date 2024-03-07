@@ -4,13 +4,13 @@ namespace TheBookSummary.Data.Models.MyBookSummary_Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    
+
     using Microsoft.EntityFrameworkCore;
-    
+
     using TheBookSummary.Common.Database_Model_Constraints;
     using TheBookSummary.Data.Common.Models;
     using TheBookSummary.Data.Models.Identity;
-    
+
     /// <summary>
     /// Represents a model for storing comments related to books in the database.
     /// </summary>

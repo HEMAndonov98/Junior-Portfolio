@@ -21,7 +21,7 @@ public class BookSummary : BaseDeletableModel<string>
         // Set a unique identifier for the book summary.
         this.Id = Guid.NewGuid().ToString();
     }
-    
+
     /// <summary>
     /// Gets or sets the short summary of the book.
     /// </summary>
@@ -29,7 +29,7 @@ public class BookSummary : BaseDeletableModel<string>
     [MaxLength(BookConstraints.ShortSummaryLength)]
     [Comment("Short summary of the book. It is required and has a maximum length as defined by BookConstraints.")]
     public string ShortSummary { get; set; }
-        
+
     /// <summary>
     /// Gets or sets the full summary of the book.
     /// </summary>

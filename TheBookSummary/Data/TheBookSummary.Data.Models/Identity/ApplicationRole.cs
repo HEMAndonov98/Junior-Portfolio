@@ -3,8 +3,9 @@
 namespace TheBookSummary.Data.Models.Identity
 {
     using System;
+
     using Microsoft.AspNetCore.Identity;
-    
+
     using TheBookSummary.Data.Common.Models;
 
     public class ApplicationRole : IdentityRole, IAuditInfo, IDeletableEntity

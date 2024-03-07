@@ -18,8 +18,8 @@ using TheBookSummary.Web.ViewModels.Book;
 /// </summary>
 public class BookService : IBookService
 {
-    private readonly IDeletableEntityRepository<Book> _repository;
-    private readonly IMapper _mapper;
+    private readonly IDeletableEntityRepository<Book> repository;
+    private readonly IMapper mapper;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="BookService"/> class.
@@ -28,8 +28,8 @@ public class BookService : IBookService
     /// <param name="mapper">Automapper instance for object mapping.</param>
     public BookService(IDeletableEntityRepository<Book> repository, IMapper mapper)
     {
-        this._repository = repository;
-        this._mapper = mapper;
+        this.repository = repository;
+        this.mapper = mapper;
     }
 
     /// <summary>
@@ -38,9 +38,9 @@ public class BookService : IBookService
     /// <returns>A collection of <see cref="BookViewModel"/> representing all books.</returns>
     public async Task<IEnumerable<BookViewModel>> GetAllBooksAsync()
     {
-        var books = await this._repository
+        var books = await this.repository
             .AllAsNoTracking()
-            .ProjectTo<BookViewModel>(this._mapper.ConfigurationProvider)
+            .ProjectTo<BookViewModel>(this.mapper.ConfigurationProvider)
             .ToArrayAsync();
 
         // If automapping breaks try manual
@@ -77,9 +77,9 @@ public class BookService : IBookService
     public async Task AddBookAsync(BookInputModel inputModel)
     {
         // Automapping
-        var book = this._mapper.Map<Book>(inputModel);
-        await this._repository.AddAsync(book);
-        await this._repository.SaveChangesAsync();
+        var book = this.mapper.Map<Book>(inputModel);
+        await this.repository.AddAsync(book);
+        await this.repository.SaveChangesAsync();
 
         // manual mapping
         //  var newSummary = new BookSummary()
@@ -107,8 +107,8 @@ public class BookService : IBookService
             throw new ArgumentNullException();
         }
 
-        var book = await this._repository.Find(book => book.Id == id)
-            .ProjectTo<BookViewModel>(this._mapper.ConfigurationProvider)
+        var book = await this.repository.Find(book => book.Id == id)
+            .ProjectTo<BookViewModel>(this.mapper.ConfigurationProvider)
             .FirstOrDefaultAsync();
 
         return book;

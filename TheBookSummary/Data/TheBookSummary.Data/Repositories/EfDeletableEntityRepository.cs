@@ -26,7 +26,7 @@
 
         public IQueryable<TEntity> Find(Expression<Func<TEntity, bool>> filter)
             => this.DbSet.Where(filter);
-        
+
         public IQueryable<TEntity> FindIncluding<TProperty>(
             Expression<Func<TEntity, TProperty>> includeExpression,
             Expression<Func<TEntity, bool>> filter)

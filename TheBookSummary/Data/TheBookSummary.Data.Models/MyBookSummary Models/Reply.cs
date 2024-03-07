@@ -3,13 +3,13 @@ namespace TheBookSummary.Data.Models.MyBookSummary_Models
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    
+
     using Microsoft.EntityFrameworkCore;
-    
+
     using TheBookSummary.Common.Database_Model_Constraints;
     using TheBookSummary.Data.Common.Models;
     using TheBookSummary.Data.Models.Identity;
-    
+
     /// <summary>
     /// Represents a model for storing replies related to comments in the database.
     /// </summary>

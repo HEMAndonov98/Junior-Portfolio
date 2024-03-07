@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+
     using TheBookSummary.Data.Common.Repositories;
     using TheBookSummary.Data.Models;
     using TheBookSummary.Services.Mapping;
