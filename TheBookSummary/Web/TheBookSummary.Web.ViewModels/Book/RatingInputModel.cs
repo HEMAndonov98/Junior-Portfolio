@@ -1,7 +1,7 @@
 namespace TheBookSummary.Web.ViewModels.Book;
 
 using System.ComponentModel.DataAnnotations;
-using AutoMapper;
+
 using TheBookSummary.Common.Database_Model_Constraints;
 using TheBookSummary.Data.Models.MyBookSummary_Models;
 using TheBookSummary.Services.Mapping;
@@ -11,11 +11,6 @@ using TheBookSummary.Services.Mapping;
 /// </summary>
 public class RatingInputModel : IMapTo<Rating>
 {
-    /// <summary>
-    /// Gets or sets the id of the given rating.
-    /// </summary>
-    public string Id { get; set; }
-
     /// <summary>
     /// Gets or sets the rating given to the book.
     /// </summary>
