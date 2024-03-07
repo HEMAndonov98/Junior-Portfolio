@@ -65,10 +65,7 @@ public class RatingService : IRatingService
 
             await this._repository.AddAsync(rating);
             await this._repository.SaveChangesAsync();
-
         }
-
-        throw new System.NotImplementedException();
     }
 
     public async Task EditBookRating(string bookId, RatingInputModel ratingInputModel)
