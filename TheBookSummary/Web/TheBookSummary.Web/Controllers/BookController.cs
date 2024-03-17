@@ -50,6 +50,7 @@ public class BookController : BaseController
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(BookInputModel inputModel)
     {
         try

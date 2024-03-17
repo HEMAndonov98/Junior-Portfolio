@@ -1,4 +1,4 @@
-﻿namespace TheBookSummary.Web;
+﻿namespace TheBookSummary.Web.Controllers;
 
 using System;
 using System.Threading.Tasks;
@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 using TheBookSummary.Services.Contracts;
-using TheBookSummary.Web.Controllers;
 using TheBookSummary.Web.ViewModels.Book;
 
 public class RatingController : BaseController
@@ -23,6 +22,7 @@ public class RatingController : BaseController
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> Rate(RatingInputModel ratingInputModel)
     {
         try
@@ -33,9 +33,9 @@ public class RatingController : BaseController
             }
 
             await this.ratingService.AddBookRating(ratingInputModel);
-            this.logger.LogInformation("Rating successfuly added!");
+            this.logger.LogInformation("Rating successfully added!");
 
-            return this.RedirectToAction(nameof(BookController.Details), nameof(BookController));
+            return this.RedirectToAction("Details", "Book");
         }
         catch (Exception e)
         {
