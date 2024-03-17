@@ -1,9 +1,10 @@
 ﻿namespace TheBookSummary.Web.Areas.Administration.Controllers
 {
-    using TheBookSummary.Common;
-    using TheBookSummary.Web.Controllers;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+
+    using TheBookSummary.Common;
+    using TheBookSummary.Web.Controllers;
 
     [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     [Area("Administration")]
