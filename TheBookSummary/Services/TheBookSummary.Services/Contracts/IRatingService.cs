@@ -8,6 +8,5 @@ public interface IRatingService
 {
     Task AddBookRating(RatingInputModel ratingInputModel);
 
-    // To do change this to remove the string bookId
-    Task EditBookRating(string bookId, RatingInputModel ratingInputModel);
+    Task EditBookRating(RatingInputModel ratingInputModel);
 }
