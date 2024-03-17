@@ -1,8 +1,9 @@
 ﻿namespace TheBookSummary.Web.Areas.Administration.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+
     using TheBookSummary.Services.Data;
     using TheBookSummary.Web.ViewModels.Administration.Dashboard;
-    using Microsoft.AspNetCore.Mvc;
 
     public class DashboardController : AdministrationController
     {
