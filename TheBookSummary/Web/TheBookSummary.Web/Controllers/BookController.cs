@@ -3,9 +3,11 @@ namespace TheBookSummary.Web.Controllers;
 using System;
 using System.Threading.Tasks;
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
+using TheBookSummary.Common;
 using TheBookSummary.Services.Contracts;
 using TheBookSummary.Web.ViewModels;
 using TheBookSummary.Web.ViewModels.Book;
@@ -51,6 +53,7 @@ public class BookController : BaseController
 
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [Authorize(Roles = $"{GlobalConstants.AdministratorRoleName},{GlobalConstants.ModeratorRoleName}")]
     public async Task<IActionResult> Create(BookInputModel inputModel)
     {
         try
