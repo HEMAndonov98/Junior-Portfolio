@@ -15,10 +15,12 @@
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
             var roleManager = serviceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
+            var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
             await SeedRoleAsync(roleManager, GlobalConstants.AdministratorRoleName);
             await SeedRoleAsync(roleManager, GlobalConstants.ModeratorRoleName);
             await SeedRoleAsync(roleManager, GlobalConstants.ManagerRoleName);
+            await SeedAdministrator(userManager);
         }
 
         private static async Task SeedRoleAsync(RoleManager<ApplicationRole> roleManager, string roleName)
@@ -31,6 +33,23 @@
                 {
                     throw new Exception(string.Join(Environment.NewLine, result.Errors.Select(e => e.Description)));
                 }
+            }
+        }
+
+        private static async Task SeedAdministrator(UserManager<ApplicationUser> userManager)
+        {
+            string email = "admin@admin.com";
+            string password = "Admin@AdminStrongPassword12345";
+
+            if (await userManager.FindByEmailAsync(email) == null)
+            {
+                var admin = new ApplicationUser();
+                admin.Email = email;
+                admin.UserName = email;
+
+                await userManager.CreateAsync(admin, password);
+
+                await userManager.AddToRoleAsync(admin, GlobalConstants.AdministratorRoleName);
             }
         }
     }
