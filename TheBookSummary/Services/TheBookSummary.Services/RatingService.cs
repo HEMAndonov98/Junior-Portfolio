@@ -36,12 +36,7 @@ public class RatingService : IRatingService
     {
         string userId = this.userManager.GetUserId(this.httpContext.HttpContext.User);
 
-        if (string.IsNullOrWhiteSpace(ratingInputModel.BookId))
-        {
-            throw new ArgumentNullException();
-        }
-
-        if (string.IsNullOrEmpty(userId))
+        if (string.IsNullOrWhiteSpace(ratingInputModel.BookId) || string.IsNullOrEmpty(userId))
         {
             throw new ArgumentNullException();
         }
@@ -55,7 +50,7 @@ public class RatingService : IRatingService
 
         if (existingRating != null)
         {
-            await this.EditBookRating(ratingInputModel.BookId, ratingInputModel);
+            await this.EditBookRating(ratingInputModel);
         }
         else
         {
@@ -66,21 +61,21 @@ public class RatingService : IRatingService
         }
     }
 
-    public async Task EditBookRating(string bookId, RatingInputModel ratingInputModel)
+    public async Task EditBookRating(RatingInputModel ratingInputModel)
     {
         var existingRating = await this.repository.All()
             .Include(r => r.Book)
             .Include(r => r.ApplicationUser)
-            .FirstOrDefaultAsync(r => r.BookId == bookId && r.ApplicationUser.Id == ratingInputModel.UserId);
+            .FirstOrDefaultAsync(r => r.BookId == ratingInputModel.BookId && r.ApplicationUser.Id == ratingInputModel.UserId);
 
         if (existingRating == null)
         {
             throw new NullReferenceException();
         }
 
-        var editedRating = this.mapper.Map<Rating>(ratingInputModel);
+        existingRating.Stars = ratingInputModel.Stars;
 
-        this.repository.Update(editedRating);
+        this.repository.Update(existingRating);
         await this.repository.SaveChangesAsync();
     }
 }
