@@ -46,6 +46,7 @@ public class BookController : BaseController
     }
 
     [HttpGet]
+    [Authorize(Roles = $"{GlobalConstants.AdministratorRoleName},{GlobalConstants.ModeratorRoleName}")]
     public IActionResult Create()
     {
         return this.View();
