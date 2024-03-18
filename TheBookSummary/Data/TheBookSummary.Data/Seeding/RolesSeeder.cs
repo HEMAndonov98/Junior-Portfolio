@@ -38,6 +38,7 @@
 
         private static async Task SeedAdministrator(UserManager<ApplicationUser> userManager)
         {
+            // Todo hide this data by providing it directly from the user-secrets
             string email = "admin@admin.com";
             string password = "Admin@AdminStrongPassword12345";
 
