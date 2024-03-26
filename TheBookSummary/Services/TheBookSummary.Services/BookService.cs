@@ -108,6 +108,7 @@ public class BookService : IBookService
         }
 
         var book = await this.repository.Find(book => book.Id == id)
+            .Include(b => b.Ratings)
             .ProjectTo<BookViewModel>(this.mapper.ConfigurationProvider)
             .FirstOrDefaultAsync();
 
