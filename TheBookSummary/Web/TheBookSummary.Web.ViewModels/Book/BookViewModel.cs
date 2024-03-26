@@ -34,7 +34,7 @@ namespace TheBookSummary.Web.ViewModels.Book
         /// Gets or sets the rating of the book.
         /// </summary>
         [Display(Name = "Rating")]
-        public double StarsRating { get; set; }
+        public ICollection<RatingViewModel> StarsRating { get; set; }
 
         /// <summary>
         /// Custom mapping configuration for the book view model.
@@ -51,6 +51,12 @@ namespace TheBookSummary.Web.ViewModels.Book
                 dst => dst.Id,
                 opt => opt.MapFrom(
                     src => src.Id));
+
+            configuration.CreateMap<Rating[], BookViewModel>()
+                .ForMember(
+                    dst => dst.StarsRating,
+                    opt => opt.MapFrom(
+                        src => src));
         }
     }
 }
