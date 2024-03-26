@@ -1,8 +1,8 @@
-using AutoMapper;
-
 namespace TheBookSummary.Web.ViewModels.Book;
 
 using System.ComponentModel.DataAnnotations;
+
+using AutoMapper;
 
 using TheBookSummary.Data.Models.MyBookSummary_Models;
 using TheBookSummary.Services.Mapping;
