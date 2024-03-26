@@ -5,6 +5,7 @@
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
 
     using TheBookSummary.Common;
@@ -16,11 +17,12 @@
         {
             var roleManager = serviceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
             var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+            var configuration = serviceProvider.GetRequiredService<IConfiguration>();
 
             await SeedRoleAsync(roleManager, GlobalConstants.AdministratorRoleName);
             await SeedRoleAsync(roleManager, GlobalConstants.ModeratorRoleName);
             await SeedRoleAsync(roleManager, GlobalConstants.ManagerRoleName);
-            await SeedAdministrator(userManager);
+            await SeedAdministrator(userManager, configuration);
         }
 
         private static async Task SeedRoleAsync(RoleManager<ApplicationRole> roleManager, string roleName)
@@ -36,11 +38,10 @@
             }
         }
 
-        private static async Task SeedAdministrator(UserManager<ApplicationUser> userManager)
+        private static async Task SeedAdministrator(UserManager<ApplicationUser> userManager, IConfiguration configuration)
         {
-            // Todo hide this data by providing it directly from the user-secrets
-            string email = "admin@admin.com";
-            string password = "Admin@AdminStrongPassword12345";
+            string email = configuration["Administrator:Email"]!;
+            string password = configuration["Administrator:Password"]!;
 
             if (await userManager.FindByEmailAsync(email) == null)
             {
