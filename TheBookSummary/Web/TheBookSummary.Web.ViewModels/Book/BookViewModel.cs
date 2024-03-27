@@ -50,13 +50,11 @@ namespace TheBookSummary.Web.ViewModels.Book
                 .ForMember(
                 dst => dst.Id,
                 opt => opt.MapFrom(
-                    src => src.Id));
-
-            configuration.CreateMap<Rating[], BookViewModel>()
+                    src => src.Id))
                 .ForMember(
                     dst => dst.StarsRating,
                     opt => opt.MapFrom(
-                        src => src));
+                        src => src.Ratings));
         }
     }
 }
