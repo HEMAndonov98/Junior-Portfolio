@@ -4,6 +4,14 @@
 
 @{
     ViewData["Title"] = "Details";
+    double averageStars = 0;
+
+    if (Model.StarsRating.Any())
+    {
+        averageStars = Model.StarsRating.Average(r => r.Stars) / 2;
+    }
+    //TODO Fix half star not showing JavaScript
+    averageStars = 4.5;
 }
 <div>
     <h4>@Html.DisplayFor(model => model.BookName)</h4>
@@ -52,11 +60,26 @@
 
         $(document).ready(function () {
             $("label").click(function () {
-                var radioId = $(this).attr("for");
+                let radioId = $(this).attr("for");
                 $("input[type= 'radio']").prop("checked", false);
                 $("#" + radioId).prop("checked", true);
                 $("#RatingsForm").submit();
             })
+        })
+        
+        const starIcons = $(".rating-container, .overallStar");
+        
+        starIcons.each(function (index) {
+            const starElement = $(this)
+            
+            if (@averageStars > index + 1)
+                {
+                    starElement.removeClass("fa-star-o").addClass("fa-star");
+                }
+            else if ((@averageStars - index + 1) > 0 && ((@averageStars- index + 1) < 1))
+                {
+                    starElement.removeClass("fa-star-o").addClass("fa-star-half");
+                }
         })
     </script>
 }
