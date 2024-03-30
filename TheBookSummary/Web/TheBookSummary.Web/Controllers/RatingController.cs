@@ -35,7 +35,7 @@ public class RatingController : BaseController
             await this.ratingService.AddBookRating(ratingInputModel);
             this.logger.LogInformation("Rating successfully added!");
 
-            return this.RedirectToAction("Details", "Book");
+            return this.RedirectToAction("Details", "Book", new { Id = ratingInputModel.BookId });
         }
         catch (Exception e)
         {
