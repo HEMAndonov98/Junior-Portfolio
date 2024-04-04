@@ -1,17 +1,10 @@
 ﻿@model TheBookSummary.Web.ViewModels.Book.BookViewModel
 
 @using TheBookSummary.Web.ViewModels.Book
+@using System.Globalization
 
 @{
     ViewData["Title"] = "Details";
-    double averageStars = 0;
-
-    if (Model.StarsRating.Any())
-    {
-        averageStars = Model.StarsRating.Average(r => r.Stars) / 2;
-    }
-    //TODO Fix half star not showing JavaScript
-    averageStars = 2.3;
 }
 <div>
     <h4>@Html.DisplayFor(model => model.BookName)</h4>
@@ -54,47 +47,36 @@
 @section Scripts {
     <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+
     <script>
         $(function () {
          
           $("#rateYo").rateYo( {
-              rating: 3.5,
-              readOnly: true
+              rating: @ViewBag.averageRating.ToString(CultureInfo.InvariantCulture),
+              readOnly: true,
           });
          
         });
     </script>
-    @* <script> *@
-    @*     $(".ratingStar").hover(function () { *@
-    @*         $(".ratingStar").css("cursor", "pointer"); *@
-    @*         $(".ratingStar").addClass("fa-star-o").removeClass("fa-star"); *@
-    @* *@
-    @*         $(this).addClass("fa-star").removeClass("fa-star-o"); *@
-    @*         $(this).prevAll(".ratingStar").addClass("fa-star").removeClass("fa-star-o"); *@
-    @*     }); *@
-    @* *@
-    @*     $(document).ready(function () { *@
-    @*         $("label").click(function () { *@
-    @*             let radioId = $(this).attr("for"); *@
-    @*             $("input[type= 'radio']").prop("checked", false); *@
-    @*             $("#" + radioId).prop("checked", true); *@
-    @*             $("#RatingsForm").submit(); *@
-    @*         }) *@
-    @*     }); *@
-    @* *@
-    @*     const starIcons = $(".rating-container, .overallStar"); *@
-    @* *@
-    @*     starIcons.each(function (index) { *@
-    @*         const starElement = $(this) *@
-    @* *@
-    @*         if (@averageStars > index) *@
-    @*             { *@
-    @*                 starElement.removeClass("fa-star-o").addClass("fa-star"); *@
-    @*             } *@
-    @*         else if ((@averageStars - (index + 1)) > 0 && (@averageStars - (index + 1)) < 1) *@
-    @*             { *@
-    @*                 starElement.removeClass("fa-star-o").addClass("fa-star-half"); *@
-    @*             } *@
-    @*     }); *@
-    @* </script> *@
+
+    <script>
+        $(function () {
+         
+          $("#rateYoRating").rateYo( {
+              fullStar: true,
+              maxValue: 10,
+              onChange: function (rating, rateYoInstance)
+                {
+                    $(this).next().text(rating);
+                },
+              onSet: function (rating, rateYoInstance)
+                {
+                    $("input[type= 'radio']").prop("checked", true);
+                    $("#star").val(rating);
+                    $("#RatingsForm").submit();    
+                }
+          });
+         
+        });
+    </script>
 }
