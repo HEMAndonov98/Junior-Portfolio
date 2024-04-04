@@ -1,12 +1,12 @@
 namespace TheBookSummary.Web.Controllers;
 
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-
 using TheBookSummary.Common;
 using TheBookSummary.Services.Contracts;
 using TheBookSummary.Web.ViewModels;
@@ -88,6 +88,16 @@ public class BookController : BaseController
             {
                 throw new InvalidOperationException();
             }
+
+            // Get average rating
+            double averageStars = 0;
+
+            if (viewModel.StarsRating.Any())
+            {
+                averageStars = viewModel.StarsRating.Average(r => r.Stars) / 2;
+            }
+
+            this.ViewBag.averageRating = averageStars;
 
             this.logger.LogInformation("Displaying book details");
             return this.View(viewModel);
