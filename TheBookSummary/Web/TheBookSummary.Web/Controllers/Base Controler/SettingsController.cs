@@ -1,13 +1,14 @@
-﻿namespace TheBookSummary.Web.Controllers
+﻿namespace TheBookSummary.Web.Controllers.Base_Controler
 {
     using System;
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Mvc;
+    
     using TheBookSummary.Data.Common.Repositories;
     using TheBookSummary.Data.Models;
     using TheBookSummary.Services.Data;
     using TheBookSummary.Web.ViewModels.Settings;
-    using Microsoft.AspNetCore.Mvc;
 
     public class SettingsController : BaseController
     {

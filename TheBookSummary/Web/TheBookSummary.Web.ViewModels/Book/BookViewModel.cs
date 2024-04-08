@@ -1,3 +1,5 @@
+using TheBookSummary.Web.ViewModels.Rating;
+
 namespace TheBookSummary.Web.ViewModels.Book
 {
     using System.Collections.Generic;

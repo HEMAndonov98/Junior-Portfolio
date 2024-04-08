@@ -1,15 +1,14 @@
-namespace TheBookSummary.Web.ViewModels.Book;
+namespace TheBookSummary.Web.ViewModels.Rating;
 
 using System.ComponentModel.DataAnnotations;
 
 using TheBookSummary.Common.Database_Model_Constraints;
-using TheBookSummary.Data.Models.MyBookSummary_Models;
 using TheBookSummary.Services.Mapping;
 
 /// <summary>
 /// Represents an input model for adding a rating to a book.
 /// </summary>
-public class RatingInputModel : IMapTo<Rating>
+public class RatingInputModel : IMapTo<Data.Models.MyBookSummary_Models.Rating>
 {
     /// <summary>
     /// Gets or sets the rating given to the book.

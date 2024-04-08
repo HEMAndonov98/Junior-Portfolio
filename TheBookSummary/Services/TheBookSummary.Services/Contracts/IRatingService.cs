@@ -1,3 +1,5 @@
+using TheBookSummary.Web.ViewModels.Rating;
+
 namespace TheBookSummary.Services.Contracts;
 
 using System.Threading.Tasks;

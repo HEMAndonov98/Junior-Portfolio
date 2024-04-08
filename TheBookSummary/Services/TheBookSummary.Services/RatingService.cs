@@ -14,6 +14,7 @@ using TheBookSummary.Data.Models.Identity;
 using TheBookSummary.Data.Models.MyBookSummary_Models;
 using TheBookSummary.Services.Contracts;
 using TheBookSummary.Web.ViewModels.Book;
+using TheBookSummary.Web.ViewModels.Rating;
 
 public class RatingService : IRatingService
 {

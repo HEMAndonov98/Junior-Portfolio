@@ -1,4 +1,6 @@
-﻿namespace TheBookSummary.Web.Areas.Administration.Controllers
+﻿using TheBookSummary.Web.Controllers.Base_Controler;
+
+namespace TheBookSummary.Web.Areas.Administration.Controllers
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;

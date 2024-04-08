@@ -1,10 +1,9 @@
-namespace TheBookSummary.Web.ViewModels.Book;
+namespace TheBookSummary.Web.ViewModels.Rating;
 
 using AutoMapper;
-using TheBookSummary.Data.Models.MyBookSummary_Models;
 using TheBookSummary.Services.Mapping;
 
-public class RatingViewModel : IMapFrom<Rating>, IHaveCustomMappings
+public class RatingViewModel : IMapFrom<Data.Models.MyBookSummary_Models.Rating>, IHaveCustomMappings
 {
     /// <summary>
     /// Gets or sets the rating given to the book.
@@ -19,7 +18,7 @@ public class RatingViewModel : IMapFrom<Rating>, IHaveCustomMappings
     /// <inheritdoc />
     public void CreateMappings(IProfileExpression configuration)
     {
-        configuration.CreateMap<Rating, RatingViewModel>()
+        configuration.CreateMap<Data.Models.MyBookSummary_Models.Rating, RatingViewModel>()
             .ForMember(
                 dst => dst.Stars,
                 opt => opt.MapFrom(

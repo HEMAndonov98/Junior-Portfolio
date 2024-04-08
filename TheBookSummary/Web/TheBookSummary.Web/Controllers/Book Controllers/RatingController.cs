@@ -1,4 +1,7 @@
-﻿namespace TheBookSummary.Web.Controllers;
+﻿using TheBookSummary.Web.Controllers.Base_Controler;
+using TheBookSummary.Web.ViewModels.Rating;
+
+namespace TheBookSummary.Web.Controllers.Book_Controllers;
 
 using System;
 using System.Threading.Tasks;

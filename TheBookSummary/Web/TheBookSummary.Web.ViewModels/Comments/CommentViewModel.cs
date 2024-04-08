@@ -1,4 +1,4 @@
-namespace TheBookSummary.Web.ViewModels.Book;
+namespace TheBookSummary.Web.ViewModels.Comments;
 
 using System.Collections.Generic;
 

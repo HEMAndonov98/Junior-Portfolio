@@ -1,4 +1,6 @@
-namespace TheBookSummary.Web.Controllers;
+using TheBookSummary.Web.Controllers.Base_Controler;
+
+namespace TheBookSummary.Web.Controllers.Book_Controllers;
 
 using System;
 using System.Linq;
@@ -7,6 +9,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+
 using TheBookSummary.Common;
 using TheBookSummary.Services.Contracts;
 using TheBookSummary.Web.ViewModels;
