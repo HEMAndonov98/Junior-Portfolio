@@ -1,9 +1,11 @@
-﻿namespace TheBookSummary.Web.Controllers
+﻿namespace TheBookSummary.Web.Controllers.Base_Controller
 {
     using System.Diagnostics;
 
-    using TheBookSummary.Web.ViewModels;
     using Microsoft.AspNetCore.Mvc;
+
+    using TheBookSummary.Web.Controllers.Base_Controller;
+    using TheBookSummary.Web.ViewModels;
 
     public class HomeController : BaseController
     {

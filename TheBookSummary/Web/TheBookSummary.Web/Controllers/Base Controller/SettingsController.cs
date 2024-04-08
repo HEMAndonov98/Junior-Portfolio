@@ -1,10 +1,9 @@
-﻿namespace TheBookSummary.Web.Controllers.Base_Controler
+﻿namespace TheBookSummary.Web.Controllers.Base_Controller
 {
     using System;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
-    
     using TheBookSummary.Data.Common.Repositories;
     using TheBookSummary.Data.Models;
     using TheBookSummary.Services.Data;

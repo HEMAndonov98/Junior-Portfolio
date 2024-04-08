@@ -1,4 +1,4 @@
-﻿using TheBookSummary.Web.Controllers.Base_Controler;
+﻿using TheBookSummary.Web.Controllers.Base_Controller;
 
 namespace TheBookSummary.Web.Areas.Administration.Controllers
 {
