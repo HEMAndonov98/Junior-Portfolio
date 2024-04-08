@@ -1,7 +1,4 @@
-﻿using TheBookSummary.Web.Controllers.Base_Controler;
-using TheBookSummary.Web.ViewModels.Rating;
-
-namespace TheBookSummary.Web.Controllers.Book_Controllers;
+﻿namespace TheBookSummary.Web.Controllers.Book_Controllers;
 
 using System;
 using System.Threading.Tasks;
@@ -10,7 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 using TheBookSummary.Services.Contracts;
+using TheBookSummary.Web.Controllers.Base_Controller;
 using TheBookSummary.Web.ViewModels.Book;
+using TheBookSummary.Web.ViewModels.Rating;
 
 public class RatingController : BaseController
 {

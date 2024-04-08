@@ -1,4 +1,4 @@
-﻿namespace TheBookSummary.Web.Controllers.Base_Controler
+﻿namespace TheBookSummary.Web.Controllers.Base_Controller
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
