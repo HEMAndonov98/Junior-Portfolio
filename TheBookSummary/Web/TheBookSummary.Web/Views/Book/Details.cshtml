@@ -1,10 +1,8 @@
 ﻿@model TheBookSummary.Web.ViewModels.Book.BookViewModel
 @using System.Globalization
+@using TheBookSummary.Web.ViewModels.Comments
 @using TheBookSummary.Web.ViewModels.Rating
 
-@{
-    ViewData["Title"] = "Details";
-}
 <div>
     <h4>@Html.DisplayFor(model => model.BookName)</h4>
     <hr />
@@ -20,7 +18,6 @@
         </dt>
         <div class="col-sm-10">
             @{
-                //TODO Change with RateYo plugin, implement the widget and create a function for submitting the form when rating is clicked.
                 await this.Html.RenderPartialAsync("RatingPartial", new RatingInputModel() { BookId = Model.Id });
             }
         </div>
@@ -30,13 +27,33 @@
         <div class="col-sm-10">
             @* rating partial view *@
             @{
-                //TODO Implement RateYo plugin, Use ReadonlyTrue and pass the Value of the average from model
                 await this.Html.RenderPartialAsync("RatingsView");
             }
         </div>
         <div id="rateYo"></div>
-
     </dl>
+</div>
+@{
+if (Model.Comments.Count == 0)
+{
+    <div>
+        <h5>No Comments</h5>
+    </div>
+}
+}
+@foreach (CommentViewModel comment in Model.Comments)
+{
+    <div class="comment-section">
+        <div class="comment">
+            <div class="username">@comment.Username</div>
+            <div class="content">@comment.Text</div>
+        </div>
+    </div>
+}
+<div>
+    @{
+        await this.Html.RenderPartialAsync("CommentInputForm", new CommentInputModel() { BookId = Model.Id });
+    }
 </div>
 <div>
     @* <a asp-action="Discussion" asp-route-id="@Model?.Id">Edit</a> | *@

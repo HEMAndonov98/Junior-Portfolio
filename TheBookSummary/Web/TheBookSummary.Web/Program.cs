@@ -67,9 +67,11 @@ public class Program
         services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
         services.AddScoped(typeof(IDeletableEntityRepository<Book>), typeof(EfDeletableEntityRepository<Book>));
         services.AddScoped(typeof(IDeletableEntityRepository<Rating>), typeof(EfDeletableEntityRepository<Rating>));
+        services.AddScoped(typeof(IDeletableEntityRepository<Comment>), typeof(EfDeletableEntityRepository<Comment>));
         services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
         // Application services
+        services.AddTransient<ICommentService, CommentService>();
         services.AddTransient<IBookService, BookService>();
         services.AddTransient<IRatingService, RatingService>();
         services.AddTransient<IEmailSender, NullMessageSender>();

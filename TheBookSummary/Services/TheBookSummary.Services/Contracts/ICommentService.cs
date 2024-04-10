@@ -8,7 +8,7 @@ using TheBookSummary.Web.ViewModels.Comments;
 
 public interface ICommentService
 {
-     Task AddComment(CommentInputModel inputModel);
+     Task AddCommentAsync(CommentInputModel inputModel);
 
      Task AddReplyToComment(CommentInputModel inputModel);
 
