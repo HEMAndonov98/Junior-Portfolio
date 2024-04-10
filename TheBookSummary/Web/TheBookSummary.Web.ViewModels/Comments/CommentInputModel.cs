@@ -20,9 +20,9 @@ public class CommentInputModel : IMapTo<Comment>, IMapTo<Reply>
     public string Text { get; set; }
 
     /// <summary>
-    /// Gets or sets the name of the user who submitted the comment.
+    /// Gets or sets the id of the book associated to this comment.
     /// </summary>
-    public string Username { get; set; }
+    public string BookId { get; set; }
 
     /// <summary>
     /// Gets or sets the id of the parent comment if this is a reply to a top level comment.
