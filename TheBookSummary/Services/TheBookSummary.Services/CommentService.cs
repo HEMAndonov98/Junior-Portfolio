@@ -40,7 +40,7 @@ public class CommentService : ICommentService
         this.mapper = mapper;
     }
 
-    public async Task AddComment(CommentInputModel inputModel)
+    public async Task AddCommentAsync(CommentInputModel inputModel)
     {
         var newComment = this.mapper.Map<Comment>(inputModel);
 
