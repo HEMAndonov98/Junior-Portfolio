@@ -1,5 +1,3 @@
-using TheBookSummary.Web.Controllers.Base_Controller;
-
 namespace TheBookSummary.Web.Controllers.Book_Controllers;
 
 using System;
@@ -12,6 +10,7 @@ using Microsoft.Extensions.Logging;
 
 using TheBookSummary.Common;
 using TheBookSummary.Services.Contracts;
+using TheBookSummary.Web.Controllers.Base_Controller;
 using TheBookSummary.Web.ViewModels;
 using TheBookSummary.Web.ViewModels.Book;
 

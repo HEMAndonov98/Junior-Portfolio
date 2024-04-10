@@ -1,15 +1,14 @@
-using TheBookSummary.Web.ViewModels.Rating;
-
 namespace TheBookSummary.Web.ViewModels.Book
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.Linq;
 
     using AutoMapper;
 
     using TheBookSummary.Data.Models.MyBookSummary_Models;
     using TheBookSummary.Services.Mapping;
+    using TheBookSummary.Web.ViewModels.Comments;
+    using TheBookSummary.Web.ViewModels.Rating;
 
     /// <summary>
     /// Represents a view model for displaying book information.
@@ -39,6 +38,12 @@ namespace TheBookSummary.Web.ViewModels.Book
         public ICollection<RatingViewModel> StarsRating { get; set; }
 
         /// <summary>
+        /// Gets or sets the comments for this book
+        /// </summary>
+        [Display(Name = "Comments")]
+        public ICollection<CommentViewModel> Comments { get; set; }
+
+        /// <summary>
         /// Custom mapping configuration for the book view model.
         /// </summary>
         /// <param name="configuration">The AutoMapper profile configuration.</param>
@@ -50,13 +55,17 @@ namespace TheBookSummary.Web.ViewModels.Book
                     opt => opt.MapFrom(
                         src => src.BookSummary))
                 .ForMember(
-                dst => dst.Id,
-                opt => opt.MapFrom(
-                    src => src.Id))
+                    dst => dst.Id,
+                    opt => opt.MapFrom(
+                        src => src.Id))
                 .ForMember(
                     dst => dst.StarsRating,
                     opt => opt.MapFrom(
-                        src => src.Ratings));
+                        src => src.Ratings))
+                .ForMember(
+                    dst => dst.Comments,
+                    opt => opt.MapFrom(
+                        src => src.Comments));
         }
     }
 }
