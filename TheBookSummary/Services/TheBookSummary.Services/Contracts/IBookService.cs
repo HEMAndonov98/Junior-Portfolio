@@ -11,5 +11,5 @@ public interface IBookService
 
     Task AddBookAsync(BookInputModel inputModel);
 
-    Task<BookViewModel> RetrieveSingleBook(string id);
+    Task<BookViewModel> RetrieveSingleBookAsync(string id);
 }
