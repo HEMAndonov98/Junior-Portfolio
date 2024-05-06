@@ -17,6 +17,7 @@ public class CommentInputModel : IMapTo<Comment>, IMapTo<Reply>
         CommentConstraints.CommentTextMaxLength,
         MinimumLength = CommentConstraints.CommentTextMinLength,
         ErrorMessage = CommentConstraints.InvalidCommentLength)]
+    [Display(Name = "Comment")]
     public string Text { get; set; }
 
     /// <summary>
