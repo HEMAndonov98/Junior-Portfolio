@@ -100,7 +100,7 @@ public class BookService : IBookService
         // await this._repository.SaveChangesAsync();
     }
 
-    public async Task<BookViewModel> RetrieveSingleBook(string id)
+    public async Task<BookViewModel> RetrieveSingleBookAsync(string id)
     {
         if (string.IsNullOrWhiteSpace(id))
         {
