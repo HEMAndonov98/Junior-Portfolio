@@ -38,7 +38,7 @@ namespace TheBookSummary.Web.ViewModels.Book
         public ICollection<RatingViewModel> StarsRating { get; set; }
 
         /// <summary>
-        /// Gets or sets the comments for this book
+        /// Gets or sets the comments for this book.
         /// </summary>
         [Display(Name = "Comments")]
         public ICollection<CommentViewModel> Comments { get; set; }
