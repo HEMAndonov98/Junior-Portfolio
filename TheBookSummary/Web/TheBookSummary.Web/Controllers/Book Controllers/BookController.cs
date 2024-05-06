@@ -84,7 +84,7 @@ public class BookController : BaseController
     {
         try
         {
-            BookViewModel viewModel = await this.bookService.RetrieveSingleBook(id);
+            BookViewModel viewModel = await this.bookService.RetrieveSingleBookAsync(id);
 
             if (!this.ModelState.IsValid)
             {
