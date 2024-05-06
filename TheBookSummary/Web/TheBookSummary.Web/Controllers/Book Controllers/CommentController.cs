@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-
 using TheBookSummary.Services.Contracts;
 using TheBookSummary.Web.Controllers.Base_Controller;
 using TheBookSummary.Web.ViewModels.Comments;
@@ -25,8 +24,6 @@ public class CommentController : BaseController
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> AddComment(CommentInputModel inputModel)
     {
-        this.ModelState["Username"].Errors.Clear();
-        this.ModelState["ParentCommentId"].Errors.Clear();
         try
         {
             if (!this.ModelState.IsValid)
