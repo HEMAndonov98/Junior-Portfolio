@@ -43,6 +43,15 @@
     {
       "library": "admin-lte@3.2.0",
       "destination": "wwwroot/lib/admin-lte"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "rateYo@2.3.4",
+      "destination": "wwwroot/lib/rateYo",
+      "files": [
+        "jquery.rateyo.min.js",
+        "jquery.rateyo.min.css"
+      ]
     }
   ]
 }
