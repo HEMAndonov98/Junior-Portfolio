@@ -1,7 +1,10 @@
+namespace TheBookSummaryTests;
+
 using System.Reflection;
-using System.Runtime.InteropServices;
+
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+
 using TheBookSummary.Data;
 using TheBookSummary.Data.Models.MyBookSummary_Models;
 using TheBookSummary.Data.Repositories;
@@ -10,20 +13,21 @@ using TheBookSummary.Services.Mapping;
 using TheBookSummary.Web.ViewModels;
 using TheBookSummary.Web.ViewModels.Book;
 
-namespace TheBookSummaryTests;
-
+/// <summary>
+/// This is class represents the unit tests for the BookService in TheBookSummary Web app using xUnit to test
+/// </summary>
 public class BookServiceTests : IDisposable
 {
     private readonly BookService sut;
 
-    private readonly EfDeletableEntityRepository<Book> inMemmoryRepo;
+    private readonly EfDeletableEntityRepository<Book> inMemoryRepo;
     private readonly IMapper autoMapper;
 
     public BookServiceTests()
     {
         this.autoMapper = this.CreateMapper();
-        this.inMemmoryRepo = this.CreateRepository();
-        this.sut = new BookService(this.inMemmoryRepo, this.autoMapper);
+        this.inMemoryRepo = this.CreateRepository();
+        this.sut = new BookService(this.inMemoryRepo, this.autoMapper);
     }
     
     //Mapping and retrieval of models test
@@ -63,7 +67,7 @@ public class BookServiceTests : IDisposable
         //Act
         await this.sut.AddBookAsync(mockBookDto);
 
-        var result = this.inMemmoryRepo.AllAsNoTracking()
+        var result = this.inMemoryRepo.AllAsNoTracking()
             .Include(b => b.BookSummary)
             .First();
         //Assert
@@ -151,8 +155,8 @@ public class BookServiceTests : IDisposable
         
         foreach (var mockBook in books)
         {
-            await this.inMemmoryRepo.AddAsync(mockBook);
-            await this.inMemmoryRepo.SaveChangesAsync();
+            await this.inMemoryRepo.AddAsync(mockBook);
+            await this.inMemoryRepo.SaveChangesAsync();
         }
 
         return books;
@@ -167,6 +171,6 @@ public class BookServiceTests : IDisposable
 
     public void Dispose()
     {
-        this.inMemmoryRepo.Dispose();
+        this.inMemoryRepo.Dispose();
     }
 }
