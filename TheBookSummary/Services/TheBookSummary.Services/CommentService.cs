@@ -15,7 +15,6 @@ using TheBookSummary.Data.Common.Repositories;
 using TheBookSummary.Data.Models.Identity;
 using TheBookSummary.Data.Models.MyBookSummary_Models;
 using TheBookSummary.Services.Contracts;
-using TheBookSummary.Web.ViewModels.Book;
 using TheBookSummary.Web.ViewModels.Comments;
 
 public class CommentService : ICommentService
@@ -50,7 +49,7 @@ public class CommentService : ICommentService
         await this.commentRepo.SaveChangesAsync();
     }
 
-    public async Task AddReplyToComment(CommentInputModel inputModel)
+    public async Task AddReplyToCommentAsync(CommentInputModel inputModel)
     {
         var newReply = this.mapper.Map<Reply>(inputModel);
 
@@ -60,7 +59,7 @@ public class CommentService : ICommentService
         await this.replyRepo.SaveChangesAsync();
     }
 
-    public async Task<CommentViewModel> GetSingleComment(string commentId)
+    public async Task<CommentViewModel> GetSingleCommentAsync(string commentId)
     {
         var comment = await this.commentRepo
             .AllAsNoTracking()
@@ -73,7 +72,7 @@ public class CommentService : ICommentService
         return viewModel;
     }
 
-    public async Task<IList<CommentViewModel>> GetCommentSet(int pageNum)
+    public async Task<IList<CommentViewModel>> GetCommentSetAsync(int pageNum)
     {
         var topComments = await this.commentRepo
             .AllAsNoTracking()
