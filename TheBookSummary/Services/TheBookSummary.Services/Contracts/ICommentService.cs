@@ -10,9 +10,9 @@ public interface ICommentService
 {
      Task AddCommentAsync(CommentInputModel inputModel);
 
-     Task AddReplyToComment(CommentInputModel inputModel);
+     Task AddReplyToCommentAsync(CommentInputModel inputModel);
 
-     Task<CommentViewModel> GetSingleComment(string commentId);
+     Task<CommentViewModel> GetSingleCommentAsync(string commentId);
 
-     Task<IList<CommentViewModel>> GetCommentSet(int pageNum);
+     Task<IList<CommentViewModel>> GetCommentSetAsync(int pageNum);
 }
