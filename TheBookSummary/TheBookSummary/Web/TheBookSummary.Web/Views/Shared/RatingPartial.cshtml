@@ -1,0 +1,38 @@
+﻿@model TheBookSummary.Web.ViewModels.Rating.RatingInputModel
+
+
+@using (Html.BeginForm("Rate", "Rating", FormMethod.Post, new { Id = "RatingsForm" }))
+{
+    <input asp-for="@Model.BookId" value="@Model.BookId" readonly hidden />
+    <input type="radio" id="star" value=2 asp-for="Stars" hidden />
+    <div id="rateYoRating"></div>
+    <div class="container position-relative">
+    <input class="btn btn-primary hiddenButtonSubmit" type="submit" value="Submit" hidden />
+</div>
+}
+
+@section Scripts
+{
+    <script>
+        $(function () {
+
+        $("#rateYoRating").rateYo( {
+            fullStar: true,
+            maxValue: 10,
+            onChange: function (rating, rateYoInstance)
+            {
+                $(this).next().text(rating);
+            },
+            onSet: function (rating, rateYoInstance)
+            {
+                $("input[type= 'radio']").prop("checked", true);
+                $("#star").val(rating);
+                $("#RatingsForm").submit();
+            }
+        });
+
+    });
+
+    </script>
+
+}

@@ -1,0 +1,119 @@
+﻿@model TheBookSummary.Web.ViewModels.Book.BookViewModel
+@using System.Globalization
+@using TheBookSummary.Web.ViewModels.Comments
+@using TheBookSummary.Web.ViewModels.Rating
+
+<div>
+    <h4>@Html.DisplayFor(model => model.BookName)</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Summary
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Summary.FullSummary))
+        </dd>
+        <dt class="col-sm-2">
+            Rate
+        </dt>
+        <div class="col-sm-10">
+            @{
+                await this.Html.RenderPartialAsync("RatingPartial", new RatingInputModel() { BookId = Model.Id });
+            }
+        </div>
+        <dt class="col-sm-2">
+            Overall rating
+        </dt>
+        <div class="col-sm-10">
+            @* rating partial view *@
+            @{
+                await this.Html.RenderPartialAsync("RatingsView");
+            }
+        </div>
+    </dl>
+</div>
+@{
+if (Model.Comments.Count == 0)
+{
+    <div>
+        <h5>No Comments</h5>
+    </div>
+}
+}
+@foreach (CommentViewModel comment in Model.Comments)
+{
+    <div class="row" style="width: 100.3%; border-bottom: 1px solid #d2cece; margin-right: -14px; margin-left: -1px;">
+
+                <div class="col-md-4" style="width: 21%;">
+                    <div class="userProfil" style="margin-left: 9px; margin-top: 12px;">
+                        <p style="margin-left: 5px; font-weight: bold; font-size: 13px;"> @comment.Username </p>
+                    </div>
+                </div>
+
+                <div class="col-md-7" style="width: 60%;">
+                    <div class="commentDetails">
+                        <p style="margin-top: 27px; font-size: 13px; color: #9c9898;"> @comment.Text </p>
+                        <a href="#" class="Reply" data-id="@comment">Reply</a>
+                        @* <div class="@string.Format("{0}_{1}", "ReplayComments", comment)" style="display:none;"> *@
+
+
+                            <div class="ReplayCommentInput" style="margin-left: 3%;  margin-bottom: 5px; margin-top: 8px;">
+                                @* <input type="text" id="@string.Format("{0}_{1}", "inputReplay", )" class="form-control"  placeholder="Add a Comment ..." style="display: inline;" /> *@
+                                <button type="button" class="btn btn-default ReplyAddComment" data-id="@comment"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span></button>
+                            </div>
+                        @* </div> *@
+                    </div>
+                </div>
+    </div>
+}
+<div class="row">
+    <div class="col-md-4">
+    @{
+        await this.Html.RenderPartialAsync("CommentInputForm", new CommentInputModel() { BookId = Model.Id });
+    }
+    </div>
+</div>
+<div>
+    @* <a asp-action="Discussion" asp-route-id="@Model?.Id">Edit</a> | *@
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
+    <script src="~/lib/rateYo/jquery.rateyo.min.js" asp-append-version="true"></script>
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+
+    <script>
+        $(function () {
+
+            $("#rateYo").rateYo( {
+                rating: @ViewBag.averageRating.ToString(CultureInfo.InvariantCulture),
+                readOnly: true,
+            });
+
+        });
+    </script>
+
+    <script>
+        $(function () {
+
+            $("#rateYoRating").rateYo( {
+                fullStar: true,
+                maxValue: 10,
+                onChange: function (rating, rateYoInstance)
+                {
+                    $(this).next().text(rating);
+                },
+                onSet: function (rating, rateYoInstance)
+                {
+                    $("input[type= 'radio']").prop("checked", true);
+                    $("#star").val(rating);
+                    $("#RatingsForm").submit();
+                }
+            });
+
+        });
+
+    </script>
+
+}

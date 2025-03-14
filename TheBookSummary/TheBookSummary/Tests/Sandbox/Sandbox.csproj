@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
+    </PropertyGroup>
+    <ItemGroup>
+        <AdditionalFiles Include="..\..\stylecop.json"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="appsettings.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="CommandLineParser" Version="2.9.1"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="7.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.3"/>
+        <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.435" PrivateAssets="all">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\TheBookSummary.Common\TheBookSummary.Common.csproj"/>
+        <ProjectReference Include="..\..\Data\TheBookSummary.Data.Common\TheBookSummary.Data.Common.csproj"/>
+        <ProjectReference Include="..\..\Data\TheBookSummary.Data.Models\TheBookSummary.Data.Models.csproj"/>
+        <ProjectReference Include="..\..\Data\TheBookSummary.Data\TheBookSummary.Data.csproj"/>
+        <ProjectReference Include="..\..\Services\TheBookSummary.Services.Data\TheBookSummary.Services.Data.csproj"/>
+        <ProjectReference Include="..\..\Services\TheBookSummary.Services.Mapping\TheBookSummary.Services.Mapping.csproj"/>
+        <ProjectReference Include="..\..\Services\TheBookSummary.Services.Messaging\TheBookSummary.Services.Messaging.csproj"/>
+        <ProjectReference Include="..\..\Services\TheBookSummary.Services\TheBookSummary.Services.csproj"/>
+    </ItemGroup>
+
+</Project>

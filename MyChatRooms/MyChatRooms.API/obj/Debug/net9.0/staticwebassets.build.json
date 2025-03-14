@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "wq2GisSaqWdTH1dqnT7ips6ybkdeQZcxcv1JfAxhzyg=",
+  "Source": "MyChatRooms.API",
+  "BasePath": "_content/MyChatRooms.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
