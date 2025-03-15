@@ -4,7 +4,9 @@
 const nextConfig = {
   /* config options here */
   reactStrictMode: true,
-  transpilePackages: ["geist"]
+  transpilePackages: ["geist"],
+  compress: true,
+  swcMinify: true,
   //  experimental: {
   //   nextScriptWorkers: true,
   // }
