@@ -104,38 +104,62 @@ export const projects = [
   },
 ];
 
+// export const testimonials = [
+//   {
+//     quote:
+//       "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
+//     name: "Michael Johnson",
+//     title: "Director of AlphaStream Technologies",
+//   },
+//   {
+//     quote:
+//       "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
+//     name: "Michael Johnson",
+//     title: "Director of AlphaStream Technologies",
+//   },
+//   {
+//     quote:
+//       "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
+//     name: "Michael Johnson",
+//     title: "Director of AlphaStream Technologies",
+//   },
+//   {
+//     quote:
+//       "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
+//     name: "Michael Johnson",
+//     title: "Director of AlphaStream Technologies",
+//   },
+//   {
+//     quote:
+//       "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
+//     name: "Michael Johnson",
+//     title: "Director of AlphaStream Technologies",
+//   },
+// ];
+
 export const testimonials = [
   {
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+    title: "Fun and Charismatic",
+    quote: "Your office will be filled with laughter, whether it's at my jokes or at my code. Either way, team morale is guaranteed to skyrocket (or at least hit terminal velocity)."
   },
   {
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+    title: "If It Ain't Broke, I'll Break It",
+    quote: "A well-functioning codebase is a great start—but can it be better? I'll refactor, debug, and push it to its limits until it's unrecognizable… in a good way. Trust me, it’ll work better when I’m done (eventually)."
   },
   {
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+    title: "Readable Code > Good Looks",
+    quote: "Some developers write code. I write bedtime stories for compilers. Clear, structured, and so easy to read, even your grandma will understand what a dependency injection is (probably)."
   },
   {
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+    title: "Test-Driven Development... Kinda",
+    quote: "I write tests. Not always first, but definitely after something breaks. If debugging is the process of removing bugs, then I am a prolific bug producer, ensuring my code is thoroughly battle-tested."
   },
   {
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
-  },
+    title: "Stack Overflow Enthusiast",
+    quote: "I may not know everything, but I sure know where to find it! From Stack Overflow to documentation deep dives, I wield the power of Ctrl+C and Ctrl+V with precision, backed by actual understanding (most of the time)."
+  }
 ];
+
 
 export const companies = [
   {

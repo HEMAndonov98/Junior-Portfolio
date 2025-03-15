@@ -5,7 +5,7 @@ import { testimonials } from '@/data'
 const Benefits = () => {
     return (
         <div className='py-20'>
-            <h1 className='heading'>
+            <h1 className='heading mb-10'>
                 What makes me a great fit for {' '}
                 <span className='text-purple'>
                     your team
