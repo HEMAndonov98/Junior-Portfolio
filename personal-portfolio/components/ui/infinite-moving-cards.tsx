@@ -79,17 +79,17 @@ export const InfiniteMovingCards = ({
             <ul
                 ref={scrollerRef}
                 className={cn(
-                    " flex min-w-full shrink-0 gap-6 py-4 w-max flex-nowrap",
+                    " flex min-w-full shrink-0 gap-16 py-4 w-max flex-nowrap",
                     start && "animate-scroll ",
                     pauseOnHover && "hover:[animation-play-state:paused]"
                 )}
             >
                 {items.map((item, idx) => (
                     <li
-                        className="w-[350px] max-w-full relative rounded-2xl border border-b-0 shrink-0 border-slate-700 px-8 py-6 md:w-[450px]"
+                        className="w-[60vw] max-w-full relative rounded-2xl border border-b-0 shrink-0 border-slate-800 p-5 md:w-[30vw]"
                         style={{
-                            background:
-                                "linear-gradient(180deg, var(--slate-800), var(--slate-900)",
+                            background: "rgb(0,3,25)",
+                            backgroundColor: "linear-gradient(90deg, rgba(0,3,25,1) 21%, rgba(55,55,208,1) 58%, rgba(2,8,9,1) 100%)",
                         }}
                         key={idx}
                     >
@@ -98,8 +98,8 @@ export const InfiniteMovingCards = ({
                                 aria-hidden="true"
                                 className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
                             ></div>
-                            <h3 className="font-bold text-xl text-center mb-2">{item.title}</h3>
-                            <span className=" relative z-20 text-sm leading-[1.6] text-gray-100 font-normal">
+                            <h3 className="font-bold text-gray-100 text-xl text-center mb-2">{item.title}</h3>
+                            <span className=" relative z-20 text-lg leading-[1.6] text-gray-200 font-normal">
                                 {item.quote}
                             </span>
                             {/* <div className="relative z-20 mt-6 flex flex-row items-center">
