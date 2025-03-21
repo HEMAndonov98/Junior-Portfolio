@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconBooks, IconHome, IconMoodLookUp, IconUser } from "@tabler/icons-react";
+import { IconBooks, IconHammer, IconHome, IconMoodLookUp, IconUser } from "@tabler/icons-react";
 import { GoProjectRoadmap } from "react-icons/go"
 import { FloatingNav } from './ui/floating-navbar';
 // TODO Add Education section link
@@ -31,7 +31,7 @@ const navItems = [
     name: "Experience",
     link: "#experience",
     icon: (
-      <IconMoodLookUp className="h-4 w-4 text-neutral-500 dark:text-white" />
+      <IconHammer className="h-4 w-4 text-neutral-500 dark:text-white" />
     ),
   },
   {

@@ -7,7 +7,7 @@ import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
 const Education = () => {
     return (
         <>
-            <section id="education" className="w-full pb-20">
+            <section id="education" className="w-full pb-10 lg:pb-20">
                 <h1 className="heading">Education & <span className="text-purple">Certification</span></h1>
                 <div className="my-20 flex flex-col lg:flex-row items-center justify-center gap-4">
                     <Card
