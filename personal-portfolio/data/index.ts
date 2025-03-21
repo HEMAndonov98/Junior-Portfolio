@@ -196,33 +196,56 @@ export const companies = [
 
 export const workExperience = [
   {
-    id: 1,
-    title: "Frontend Engineer Intern",
-    desc: "Assisted in the development of a web-based platform using React.js, enhancing interactivity.",
-    className: "md:col-span-2",
-    thumbnail: "/exp1.svg",
-  },
+  id: 1,
+  title: "Languages",
+  technology: [
+    { name: "JavaScript", level: 8 },
+    { name: "C#", level: 7 },
+    { name: "TypeScript", level: 6 },
+    { name: "SQL", level: 6 }, 
+    { name: "HTML", level: 9 },
+    { name: "CSS", level: 8 }
+  ],
+  className: "md:col-span-2",
+},
   {
-    id: 2,
-    title: "Mobile App Dev - JSM Tech",
-    desc: "Designed and developed mobile app for both iOS & Android platforms using React Native.",
-    className: "md:col-span-2", // change to md:col-span-2
-    thumbnail: "/exp2.svg",
-  },
-  {
-    id: 3,
-    title: "Freelance App Dev Project",
-    desc: "Led the dev of a mobile app for a client, from initial concept to deployment on app stores.",
-    className: "md:col-span-2", // change to md:col-span-2
-    thumbnail: "/exp3.svg",
-  },
-  {
-    id: 4,
-    title: "Lead Frontend Developer",
-    desc: "Developed and maintained user-facing features using modern frontend technologies.",
-    className: "md:col-span-2",
-    thumbnail: "/exp4.svg",
-  },
+  id: 2,
+  title: "Frameworks & Libraries",
+  technology: [
+    { name: "ASP.NET Core", level: 7 },
+    { name: "ASP.NET MVC", level: 6 },
+    { name: "Entity Framework Core", level: 6 },
+    { name: "SignalR", level: 5 },
+    { name: "Next.js", level: 5 },
+    { name: "React", level: 5 },
+    { name: "Node.js", level: 5 },
+  ],
+  className: "md:col-span-2",
+},
+{
+  id: 4,
+  title: "Databases & Storage",
+  technology: [
+    { name: "MSSQL", level: 7 },
+    { name: "PostgreSQL", level: 6 },
+    { name: "MySQL", level: 6 },
+    { name: "SQLite", level: 5 },
+    { name: "Supabase", level: 5 },
+  ],
+  className: "md:col-span-2",
+},
+{
+  id: 5,
+  title: "Concepts & Methodologies",
+  technology: [
+    { name: "Object-Oriented Programming", level: 8 },
+    { name: "Data Structures & Algorithms", level: 7 },
+    { name: "RESTful APIs", level: 7 },
+    { name: "Authentication & Security", level: 6 },
+    { name: "Software Design Patterns", level: 5 },
+  ],
+  className: "md:col-span-2",
+},
 ];
 
 export const socialMedia = [
