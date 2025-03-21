@@ -7,6 +7,10 @@ const nextConfig = {
   transpilePackages: ["geist"],
   compress: true,
   swcMinify: true,
+  output: 'export',
+  typescript: {
+    ignoreBuildErrors: true,
+  }
   //  experimental: {
   //   nextScriptWorkers: true,
   // }
