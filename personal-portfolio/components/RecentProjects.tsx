@@ -44,7 +44,7 @@ const RecentProjects = () => {
                                 <div className='flex justify-between items-center mt-7 mb-3'>
                                     <div className='flex items-center'>
                                         {iconLists.map((icon, index) => (
-                                            <div key={icon} className='border border-white/[0.2] rounded-full bg-black lg:w-10 lg:h-10 w-9 h-9 flex justify-center items-center'
+                                            <div key={icon} className='border border-white/[0.2] rounded-full bg-black lg:w-10 lg:h-10 w-9 h-9 flex justify-center items-center hover:w-14 hover:h-14 hover:z-10'
                                                 style={{ transform: `translateX(-${5 * index * 2}px)` }}>
                                                 <img src={icon} alt={icon} className='p-2' />
                                             </div>
@@ -52,7 +52,7 @@ const RecentProjects = () => {
                                     </div>
 
                                     <div className='flex items-center justify-cente border border-white/[0.2] bg-black rounded-lg p-2'>
-                                        <p className='flex lg:text-xl md:text-xs text-sm text-purple'>Check Repo</p>
+                                        <p className='flex lg:text-xl md:text-xs text-sm text-purple hover:opacity-65'>Check Repo</p>
                                         <FaLocationArrow className='ms-3' color='#CBACF9' />
                                     </div>
                                 </div>
