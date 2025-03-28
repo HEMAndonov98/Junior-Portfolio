@@ -252,13 +252,16 @@ export const socialMedia = [
   {
     id: 1,
     img: "/git.svg",
+    link: "https://github.com/HEMAndonov98",
   },
   {
     id: 2,
-    img: "/twit.svg",
+    img: "/insta.svg",
+    link: "https://www.instagram.com/nottherealhristo/",
   },
   {
     id: 3,
     img: "/link.svg",
+    link: "www.linkedin.com/in/hristo-e-andonov",
   },
 ];

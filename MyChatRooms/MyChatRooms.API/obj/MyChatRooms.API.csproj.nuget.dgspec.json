@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Volumes/ExtremeSSD/Trash/MyChatRooms/MyChatRooms.API/MyChatRooms.API.csproj": {}
+    "/Volumes/ExtremeSSD/Projects/Junior Protfolio/MyChatRooms/MyChatRooms.API/MyChatRooms.API.csproj": {}
   },
   "projects": {
-    "/Volumes/ExtremeSSD/Trash/MyChatRooms/MyChatRooms.API/MyChatRooms.API.csproj": {
+    "/Volumes/ExtremeSSD/Projects/Junior Protfolio/MyChatRooms/MyChatRooms.API/MyChatRooms.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Volumes/ExtremeSSD/Trash/MyChatRooms/MyChatRooms.API/MyChatRooms.API.csproj",
+        "projectUniqueName": "/Volumes/ExtremeSSD/Projects/Junior Protfolio/MyChatRooms/MyChatRooms.API/MyChatRooms.API.csproj",
         "projectName": "MyChatRooms.API",
-        "projectPath": "/Volumes/ExtremeSSD/Trash/MyChatRooms/MyChatRooms.API/MyChatRooms.API.csproj",
+        "projectPath": "/Volumes/ExtremeSSD/Projects/Junior Protfolio/MyChatRooms/MyChatRooms.API/MyChatRooms.API.csproj",
         "packagesPath": "/Users/hristoandonov/.nuget/packages/",
-        "outputPath": "/Volumes/ExtremeSSD/Trash/MyChatRooms/MyChatRooms.API/obj/",
+        "outputPath": "/Volumes/ExtremeSSD/Projects/Junior Protfolio/MyChatRooms/MyChatRooms.API/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/hristoandonov/.nuget/NuGet/NuGet.Config"
@@ -47,11 +47,11 @@
           "dependencies": {
             "Microsoft.AspNetCore.Identity": {
               "target": "Package",
-              "version": "[2.3.0, )"
+              "version": "[2.3.1, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[9.0.2, )"
+              "version": "[9.0.3, )"
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
@@ -65,7 +65,7 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.2, )"
+              "version": "[9.0.3, )"
             },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
