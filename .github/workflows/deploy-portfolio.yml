@@ -1,0 +1,48 @@
+name: Deploy Next.js Portfolio to GitHub Pages
+
+on:
+    push:
+        branches: [main]
+        paths:
+            - "personal-portfolio/**"
+    # Allow manual triggering
+    workflow_dispatch:
+
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-latest
+
+        defaults:
+            run:
+                # Set the working directory to the nested portfolio folder
+                working-directory: personal-portfolio
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v3
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: "18"
+                  cache: "npm"
+                  cache-dependency-path: personal-portfolio/package-lock.json
+
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Build with Next.js
+              run: |
+                  npm run build
+                  # Required for GitHub Pages with Next.js
+                  touch out/.nojekyll
+
+            - name: Export static files
+              run: npm run export || npm run build:static || echo "Using build output"
+
+            - name: Deploy to GitHub Pages
+              uses: JamesIves/github-pages-deploy-action@v4
+              with:
+                  branch: gh-pages
+                  folder: personal-portfolio/out
+                  clean: true
