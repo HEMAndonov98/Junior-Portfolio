@@ -1,4 +1,9 @@
 const getImagePath = (path: string): string => {
+  //Check for empty path
+  if(path === ""){
+    return path
+  }
+
   // For GitHub Pages deployment
   const basePath = process.env.NODE_ENV === 'production' ? '/Junior-Portfolio' : '';
   
