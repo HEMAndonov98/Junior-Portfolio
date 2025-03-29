@@ -11,6 +11,8 @@ on:
 jobs:
     build-and-deploy:
         runs-on: ubuntu-latest
+        permissions:
+            contents: write # This is important for deploying to GitHub Pages
 
         defaults:
             run:
@@ -38,11 +40,12 @@ jobs:
                   touch out/.nojekyll
 
             - name: Export static files
-              run: npm run export || npm run build:static || echo "Using build output"
+              run: npm run export || true # Continue even if export command fails (for newer Next.js versions)
 
             - name: Deploy to GitHub Pages
               uses: JamesIves/github-pages-deploy-action@v4
               with:
-                  branch: gh-pages
                   folder: personal-portfolio/out
+                  branch: gh-pages
+                  token: ${{ secrets.GITHUB_TOKEN }}
                   clean: true
