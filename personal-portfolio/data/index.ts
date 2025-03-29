@@ -24,7 +24,7 @@ export const gridItems = [
     imgClassName: "w-full h-full",
     titleClassName: "justify-end",
     img: getImagePath("/b1.svg"),
-    spareImg: "",
+    spareImg: getImagePath(""),
   },
   {
     id: 2,
@@ -34,7 +34,7 @@ export const gridItems = [
     imgClassName: "",
     titleClassName: "justify-start",
     img: getImagePath(""),
-    spareImg: "",
+    spareImg: getImagePath(""),
   },
   {
     id: 3,
@@ -44,7 +44,7 @@ export const gridItems = [
     imgClassName: "",
     titleClassName: "justify-center",
     img: getImagePath(""),
-    spareImg: "",
+    spareImg: getImagePath(""),
   },
   {
     id: 4,
@@ -54,7 +54,7 @@ export const gridItems = [
     imgClassName: "",
     titleClassName: "justify-start",
     img: getImagePath("/grid.svg"),
-    spareImg: "/b4.svg",
+    spareImg: getImagePath("/b4.svg"),
   },
 
   {
@@ -65,7 +65,7 @@ export const gridItems = [
     imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
     titleClassName: "justify-center md:justify-start lg:justify-cente",
     img: getImagePath("/b5.svg"),
-    spareImg: "/grid.svg",
+    spareImg: getImagePath("/grid.svg"),
   },
   {
     id: 6,
@@ -75,7 +75,7 @@ export const gridItems = [
     imgClassName: "",
     titleClassName: "justify-center md:max-w-full max-w-60 text-center",
     img: getImagePath(""),
-    spareImg: "",
+    spareImg: getImagePath(""),
   },
 ];
 
@@ -85,7 +85,7 @@ export const projects = [
     title: "Personal Blog Hristos Dev Adventures",
     des: "Built a personal blog to record interesting things I find relating to tech using jekyll SSG and heavily modified css from scratch with modified styles",
     img: getImagePath("/blog-project.png"),
-    iconLists: ["/html5.svg", "/js.svg", "/jekyll.svg", "/css.svg"],
+    iconLists: [getImagePath("/html5.svg"), getImagePath("/js.svg"), getImagePath("/jekyll.svg"), getImagePath("/css.svg")],
     link: "https://github.com/HEMAndonov98/HTML-CSS-May-2024/tree/main/Workshop/hristos-dev-adventures",
   },
   {
@@ -93,7 +93,7 @@ export const projects = [
     title: "CustomDiFramework",
     des: "Created a dependeny injection framework from scratch to better understand how it works under the hood",
     img: getImagePath("/DiFrameworkImage.png"),
-    iconLists: ["/CSharpIcon.svg", "/NETcore.svg"],
+    iconLists: [getImagePath("/CSharpIcon.svg"), getImagePath("/NETcore.svg")],
     link: "https://github.com/adrianhajdin/zoom-clone",
   },
   {
@@ -101,7 +101,7 @@ export const projects = [
     title: "Console Snake game",
     des: "Take a break from the endless coding and problem solving, and enjoy some snake",
     img: getImagePath("/SnakeProject.png"),
-    iconLists: ["/CSharpIcon.svg", "/NETcore.svg"],
+    iconLists: [getImagePath("/CSharpIcon.svg"), getImagePath("/NETcore.svg")],
     link: "https://github.com/HEMAndonov98/SoftUni-C-Sharp-OOP/tree/master/Simple%20Snake%20Workshop/SimpleSnake",
   },
   {
@@ -109,7 +109,7 @@ export const projects = [
     title: "Web Chat Application",
     des: "Web based chat application with a sleek and intuitive UI",
     img: getImagePath("/p4.svg"),
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/NETcore.svg", "/postgresql.svg"],
+    iconLists: [getImagePath("/next.svg"), getImagePath("/tail.svg"), getImagePath("/ts.svg"), getImagePath("/NETcore.svg"), getImagePath("/postgresql.svg")],
     link: "https://github.com/adrianhajdin/iphone",
   },
 ];
@@ -171,38 +171,38 @@ export const testimonials = [
 ];
 
 
-export const companies = [
-  {
-    id: 1,
-    name: "cloudinary",
-    img: getImagePath("/cloud.svg"),
-    nameImg: "/cloudName.svg",
-  },
-  {
-    id: 2,
-    name: "appwrite",
-    img: getImagePath("/app.svg"),
-    nameImg: "/appName.svg",
-  },
-  {
-    id: 3,
-    name: "HOSTINGER",
-    img: getImagePath("/host.svg"),
-    nameImg: "/hostName.svg",
-  },
-  {
-    id: 4,
-    name: "stream",
-    img: getImagePath("/s.svg"),
-    nameImg: "/streamName.svg",
-  },
-  {
-    id: 5,
-    name: "docker.",
-    img: getImagePath("/dock.svg"),
-    nameImg: "/dockerName.svg",
-  },
-];
+// export const companies = [
+//   {
+//     id: 1,
+//     name: "cloudinary",
+//     img: getImagePath("/cloud.svg"),
+//     nameImg: "/cloudName.svg",
+//   },
+//   {
+//     id: 2,
+//     name: "appwrite",
+//     img: getImagePath("/app.svg"),
+//     nameImg: "/appName.svg",
+//   },
+//   {
+//     id: 3,
+//     name: "HOSTINGER",
+//     img: getImagePath("/host.svg"),
+//     nameImg: "/hostName.svg",
+//   },
+//   {
+//     id: 4,
+//     name: "stream",
+//     img: getImagePath("/s.svg"),
+//     nameImg: "/streamName.svg",
+//   },
+//   {
+//     id: 5,
+//     name: "docker.",
+//     img: getImagePath("/dock.svg"),
+//     nameImg: "/dockerName.svg",
+//   },
+// ];
 
 export const workExperience = [
   {
