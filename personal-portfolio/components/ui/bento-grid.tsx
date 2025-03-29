@@ -2,7 +2,6 @@ import { cn } from "@/lib/utils";
 import { BackgroundGradientAnimation } from "./background-gradient-animation";
 import { GlobeDemo } from "../GridGlobe";
 import EmailCard from "../EmailCard";
-import { useRouter } from "next/router";
 
 export const BentoGrid = ({
   className,
@@ -45,10 +44,6 @@ export const BentoGridItem = ({
     spareImg?: string;
     titleClassName?: string;
   }) => {
-
-  const router = useRouter();
-  const basePath = router.basePath;
-
   return (
     <div
       className={cn(
@@ -66,7 +61,7 @@ export const BentoGridItem = ({
         <div className="w-full h-full absolute">
           {img && (
             <img
-              src={basePath.img}
+              src={img}
               alt={img}
               className={cn(imgClassName, 'object-cover object-center opacity-75')}
             />

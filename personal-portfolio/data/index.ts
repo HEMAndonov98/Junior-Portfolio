@@ -1,3 +1,13 @@
+const getImagePath = (path: string): string => {
+  // For GitHub Pages deployment
+  const basePath = process.env.NODE_ENV === 'production' ? '/Junior-Portfolio' : '';
+  
+  // Make sure the path starts with a slash
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  
+  return `${basePath}${normalizedPath}`;
+};
+
 export const navItems = [
   { name: "About", link: "#about" },
   { name: "Projects", link: "#projects" },
@@ -13,7 +23,7 @@ export const gridItems = [
     className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
     imgClassName: "w-full h-full",
     titleClassName: "justify-end",
-    img: "/b1.svg",
+    img: getImagePath("/b1.svg"),
     spareImg: "",
   },
   {
@@ -23,7 +33,7 @@ export const gridItems = [
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
     titleClassName: "justify-start",
-    img: "",
+    img: getImagePath(""),
     spareImg: "",
   },
   {
@@ -33,7 +43,7 @@ export const gridItems = [
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
     titleClassName: "justify-center",
-    img: "",
+    img: getImagePath(""),
     spareImg: "",
   },
   {
@@ -43,7 +53,7 @@ export const gridItems = [
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
     titleClassName: "justify-start",
-    img: "/grid.svg",
+    img: getImagePath("/grid.svg"),
     spareImg: "/b4.svg",
   },
 
@@ -54,7 +64,7 @@ export const gridItems = [
     className: "md:col-span-3 md:row-span-2",
     imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
     titleClassName: "justify-center md:justify-start lg:justify-cente",
-    img: "/b5.svg",
+    img: getImagePath("/b5.svg"),
     spareImg: "/grid.svg",
   },
   {
@@ -64,7 +74,7 @@ export const gridItems = [
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
     titleClassName: "justify-center md:max-w-full max-w-60 text-center",
-    img: "",
+    img: getImagePath(""),
     spareImg: "",
   },
 ];
@@ -74,7 +84,7 @@ export const projects = [
     id: 1,
     title: "Personal Blog Hristos Dev Adventures",
     des: "Built a personal blog to record interesting things I find relating to tech using jekyll SSG and heavily modified css from scratch with modified styles",
-    img: "/blog-project.png",
+    img: getImagePath("/blog-project.png"),
     iconLists: ["/html5.svg", "/js.svg", "/jekyll.svg", "/css.svg"],
     link: "https://github.com/HEMAndonov98/HTML-CSS-May-2024/tree/main/Workshop/hristos-dev-adventures",
   },
@@ -82,7 +92,7 @@ export const projects = [
     id: 2,
     title: "CustomDiFramework",
     des: "Created a dependeny injection framework from scratch to better understand how it works under the hood",
-    img: "/DiFrameworkImage.png",
+    img: getImagePath("/DiFrameworkImage.png"),
     iconLists: ["/CSharpIcon.svg", "/NETcore.svg"],
     link: "https://github.com/adrianhajdin/zoom-clone",
   },
@@ -90,7 +100,7 @@ export const projects = [
     id: 3,
     title: "Console Snake game",
     des: "Take a break from the endless coding and problem solving, and enjoy some snake",
-    img: "/SnakeProject.png",
+    img: getImagePath("/SnakeProject.png"),
     iconLists: ["/CSharpIcon.svg", "/NETcore.svg"],
     link: "https://github.com/HEMAndonov98/SoftUni-C-Sharp-OOP/tree/master/Simple%20Snake%20Workshop/SimpleSnake",
   },
@@ -98,7 +108,7 @@ export const projects = [
     id: 4,
     title: "Web Chat Application",
     des: "Web based chat application with a sleek and intuitive UI",
-    img: "/p4.svg",
+    img: getImagePath("/p4.svg"),
     iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/NETcore.svg", "/postgresql.svg"],
     link: "https://github.com/adrianhajdin/iphone",
   },
@@ -165,31 +175,31 @@ export const companies = [
   {
     id: 1,
     name: "cloudinary",
-    img: "/cloud.svg",
+    img: getImagePath("/cloud.svg"),
     nameImg: "/cloudName.svg",
   },
   {
     id: 2,
     name: "appwrite",
-    img: "/app.svg",
+    img: getImagePath("/app.svg"),
     nameImg: "/appName.svg",
   },
   {
     id: 3,
     name: "HOSTINGER",
-    img: "/host.svg",
+    img: getImagePath("/host.svg"),
     nameImg: "/hostName.svg",
   },
   {
     id: 4,
     name: "stream",
-    img: "/s.svg",
+    img: getImagePath("/s.svg"),
     nameImg: "/streamName.svg",
   },
   {
     id: 5,
     name: "docker.",
-    img: "/dock.svg",
+    img: getImagePath("/dock.svg"),
     nameImg: "/dockerName.svg",
   },
 ];
@@ -251,17 +261,17 @@ export const workExperience = [
 export const socialMedia = [
   {
     id: 1,
-    img: "/git.svg",
+    img: getImagePath("/git.svg"),
     link: "https://github.com/HEMAndonov98",
   },
   {
     id: 2,
-    img: "/insta.svg",
+    img: getImagePath("/insta.svg"),
     link: "https://www.instagram.com/nottherealhristo/",
   },
   {
     id: 3,
-    img: "/link.svg",
+    img: getImagePath("/link.svg"),
     link: "www.linkedin.com/in/hristo-e-andonov",
   },
 ];
