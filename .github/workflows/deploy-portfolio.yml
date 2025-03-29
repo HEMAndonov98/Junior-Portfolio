@@ -48,6 +48,13 @@ jobs:
               env:
                   SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
+            - name: Copy public directory to output
+              run: |
+                  # Ensure public assets are in the build output
+                  if [ -d "public" ] && [ -d "out" ]; then
+                    cp -r public/* out/
+                  fi
+
             - name: Deploy to GitHub Pages
               uses: JamesIves/github-pages-deploy-action@v4
               with:
