@@ -7,7 +7,7 @@ const nextConfig = {
   transpilePackages: ["geist"],
   compress: true,
   swcMinify: true,
-  basePath: '/personal-portfolio',
+  basePath: '/Junior-Portfolio',
   output: 'export',
   typescript: {
     ignoreBuildErrors: true,
