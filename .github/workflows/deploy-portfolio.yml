@@ -12,11 +12,10 @@ jobs:
     build-and-deploy:
         runs-on: ubuntu-latest
         permissions:
-            contents: write # This is important for deploying to GitHub Pages
+            contents: write
 
         defaults:
             run:
-                # Set the working directory to the nested portfolio folder
                 working-directory: personal-portfolio
 
         steps:
@@ -33,14 +32,21 @@ jobs:
             - name: Install dependencies
               run: npm ci
 
+            - name: Create Sentry Environment File
+              run: |
+                  echo "SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}" > .env.sentry-build-plugin
+
             - name: Build with Next.js
               run: |
                   npm run build
-                  # Required for GitHub Pages with Next.js
                   touch out/.nojekyll
+              env:
+                  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
             - name: Export static files
-              run: npm run export || true # Continue even if export command fails (for newer Next.js versions)
+              run: npm run export || true
+              env:
+                  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
             - name: Deploy to GitHub Pages
               uses: JamesIves/github-pages-deploy-action@v4
