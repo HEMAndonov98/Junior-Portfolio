@@ -1,7 +1,7 @@
 const getImagePath = (path: string): string => {
   //Check for empty path
-  if(path === ""){
-    return path
+  if(path == ""){
+    return ""
   }
 
   // For GitHub Pages deployment
