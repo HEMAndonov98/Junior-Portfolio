@@ -8,10 +8,6 @@ const nextConfig = {
   compress: true,
   swcMinify: true,
   basePath: '/Junior-Portfolio',
-  assetPrefix: '/Junior-Portfolio',
-  images: {
-    unoptimized: true,
-  },
   output: 'export',
   typescript: {
     ignoreBuildErrors: true,
