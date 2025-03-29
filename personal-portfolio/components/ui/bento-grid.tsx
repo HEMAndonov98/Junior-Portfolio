@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { BackgroundGradientAnimation } from "./background-gradient-animation";
 import { GlobeDemo } from "../GridGlobe";
 import EmailCard from "../EmailCard";
+import { useRouter } from "next/router";
 
 export const BentoGrid = ({
   className,
@@ -33,17 +34,20 @@ export const BentoGridItem = ({
   titleClassName
 }:
   {
-  className?: string;
-  title?: string | React.ReactNode;
-  description?: string | React.ReactNode;
-  header?: React.ReactNode;
-  icon?: React.ReactNode;
-  id: number;
-  img?: string;
-  imgClassName?: string;
-  spareImg?: string;
-  titleClassName?: string;
-}) => {
+    className?: string;
+    title?: string | React.ReactNode;
+    description?: string | React.ReactNode;
+    header?: React.ReactNode;
+    icon?: React.ReactNode;
+    id: number;
+    img?: string;
+    imgClassName?: string;
+    spareImg?: string;
+    titleClassName?: string;
+  }) => {
+
+  const router = useRouter();
+  const basePath = router.basePath;
 
   return (
     <div
@@ -60,26 +64,26 @@ export const BentoGridItem = ({
     >
       <div className={`${id === 6 && 'flex justify-center'} h-full`}>
         <div className="w-full h-full absolute">
-           {img && ( 
-            <img 
-              src={img}
+          {img && (
+            <img
+              src={basePath.img}
               alt={img}
-              className={cn(imgClassName, 'object-cover object-center opacity-75')} 
-              />
+              className={cn(imgClassName, 'object-cover object-center opacity-75')}
+            />
           )}
         </div>
         <div className={`absolute right-0 -bottom-5 ${id === 5 && 'w-full opacity-80'}`}>
-          {spareImg && ( 
-            <img 
+          {spareImg && (
+            <img
               src={spareImg}
               alt={spareImg}
               className='object-cover object-center'
-              />
+            />
           )}
         </div>
         {id === 6 && (
           <BackgroundGradientAnimation>
-            <div className="absolute z-50 flex justify-center items-center text-white font-bold"/>
+            <div className="absolute z-50 flex justify-center items-center text-white font-bold" />
           </BackgroundGradientAnimation>
         )}
 
@@ -88,34 +92,34 @@ export const BentoGridItem = ({
             {description}
           </div>
           <div className="font-sans font-bold text-lg lg:text-3xl max-w-96 z-10">
-          {title}
+            {title}
           </div>
-            {id === 2 && <GlobeDemo />}
+          {id === 2 && <GlobeDemo />}
 
-            {id === 3 && (
-              <div className="flex absolute gap-3 lg:gap-5 w-fit top-0 right-10 lg:right-3 z-0 opacity-85">
-                <div className="flex flex-col gap-2 lg:gap-3">
-                  {['js', 'Node.js', 'Next.js', '.Net Core'].map
+          {id === 3 && (
+            <div className="flex absolute gap-3 lg:gap-5 w-fit top-0 right-10 lg:right-3 z-0 opacity-85">
+              <div className="flex flex-col gap-2 lg:gap-3">
+                {['js', 'Node.js', 'Next.js', '.Net Core'].map
                   ((item) => (
                     <span key={item} className="py-2 lg:py-3 lg:px-3 px-3 text-xs lg:text-base opacity-50 lg:opacity-100 rounded-lg text-center bg-[#10132E]">{item}</span>
                   ))}
-                  <span className="py-3 px-3 roundend-lg text-center bg-[#10132e]" />
-                </div>
-                <div className="flex flex-col-reverse gap-2 lg:gap-5">
-                  {['ASP.NET', 'C#', 'EF-Core', 'MSSQL'].map
-                  ((item) => (
-                    <span key={item} className="py-2 lg:py-3 lg:px-3 px-3 text-xs lg:text-base opacity-50 lg:opacity-100 rounded-lg text-center bg-[#10132E]">{item}</span>
-                  ))}
-                  <span className="py-3 px-3 roundend-lg text-center bg-[#10132e]" />
-                </div>
+                <span className="py-3 px-3 roundend-lg text-center bg-[#10132e]" />
               </div>
-            )}
+              <div className="flex flex-col-reverse gap-2 lg:gap-5">
+                {['ASP.NET', 'C#', 'EF-Core', 'MSSQL'].map
+                  ((item) => (
+                    <span key={item} className="py-2 lg:py-3 lg:px-3 px-3 text-xs lg:text-base opacity-50 lg:opacity-100 rounded-lg text-center bg-[#10132E]">{item}</span>
+                  ))}
+                <span className="py-3 px-3 roundend-lg text-center bg-[#10132e]" />
+              </div>
+            </div>
+          )}
 
-            {id === 6 && (
-             <EmailCard />
-            )}
+          {id === 6 && (
+            <EmailCard />
+          )}
+        </div>
       </div>
-    </div>
     </div>
 
   );
