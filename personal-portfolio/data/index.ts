@@ -1,4 +1,4 @@
-const getImagePath = (path: string): string => {
+export const getImagePath = (path: string): string => {
   //Check for empty path
   if(path == ""){
     return ""

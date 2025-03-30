@@ -1,4 +1,4 @@
-import { projects } from '@/data';
+import { getImagePath, projects } from '@/data';
 import React from 'react';
 import { PinContainer } from './ui/3d-pin';
 import { FaLocationArrow } from "react-icons/fa";
@@ -25,7 +25,7 @@ const RecentProjects = () => {
                             <PinContainer title={link} href={link}>
                                 <div className='relative flex items-center justify-center sm:w-96 w-[80vw] lg:w-[35rem] overflow-hidden h-[20vh] lg:h-[30vh] mb-10'>
                                     <div className='relative w-full h-ful object-cover overflow-hidden lg:rounded-3xl bg-[#13162d]'>
-                                        <img src='/bg.png' alt='/bg.png' />
+                                        <img src={getImagePath("/bg.png")} alt='/bg.png' />
                                     </div>
                                     <img
                                         src={img}
