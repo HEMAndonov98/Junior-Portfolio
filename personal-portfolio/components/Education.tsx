@@ -19,7 +19,7 @@ const Education = () => {
                             containerClassName="bg-emerald-900"
                         />
                     </Card>
-                    <Card title="Nisha is Munni"
+                    <Card title="Course validation"
                         icon={<AceternityIcon iconTitle='Certification' />}
                         description={`
                                 C# Advanced - May 2022 \nC# OOP - June 2022 \nDSA Fundamentals - November 2022 \nMS SQL - January 2023 \nEF Core - January 2023 \nHTML & CSS - May 2024
