@@ -1,36 +1,227 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌟 Your Name - Portfolio
 
-## Getting Started
+![Portfolio Banner](https://your-banner-image-url.com)
 
-First, run the development server:
+## 📋 Table of Contents
+
+-   [Overview](#overview)
+-   [Live Demo](#live-demo)
+-   [Features](#features)
+-   [Tech Stack](#tech-stack)
+-   [Project Structure](#project-structure)
+-   [Getting Started](#getting-started)
+-   [Deployment](#deployment)
+-   [Performance](#performance)
+-   [Future Improvements](#future-improvements)
+-   [Credits](#credits)
+-   [License](#license)
+
+## 📝 Overview
+
+This is my personal portfolio website which I created with the help of JavaScript Mastery mainly uisng Nextjs and TailwindCSS. The project aims to showcase my skills and what makes me unique for anyone who would be looking to start a project together
+
+![Portfolio Screenshot](https://your-screenshot-url.com)
+
+## 🔗 Live Demo
+
+Visit the live site: [Hristo Andonov Portfolio](https://hemandonov98.github.io/Junior-Portfolio/)
+
+## ✨ Features
+
+-   **Responsive Design** - Seamlessly works across all devices
+-   **Interactive UI** - Engaging user interface with smooth animations
+-   **Project Showcase** - Elegantly displays your featured projects
+-   **Contact Form** - Easy way for visitors to reach out
+-   **Performance Optimized** - Fast loading times and smooth experience
+
+## 🛠️ Tech Stack
+
+Frontend:
+
+-   ![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
+-   ![Next.js](https://img.shields.io/badge/-Next.js-000000?style=flat-square&logo=next.js&logoColor=white)
+-   ![TailwindCSS](https://img.shields.io/badge/-TailwindCSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)
+-   ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+-   ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+
+Backend/Services:
+
+-   ![Node.js](https://img.shields.io/badge/-Node.js-339933?style=flat-square&logo=node.js&logoColor=white)
+
+Deployment:
+
+-   [![GitHub](https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=white)](#)
+
+## 📂 Project Structure
+
+```
+personal-portfolio/
+|—— Readme Assets
+|—— app/
+|—— components/ #Reusable components
+|  |__ ui/
+|—— data/       #Component data
+|—— lib/        #Acenternity ui utility configuration
+|__ public/     #project assets
+```
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+-   Node.js (v14.0 or higher)
+-   npm or yarn
+
+### Installation
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/HEMAndonov98/Junior-Portfolio.git
+```
+
+2. Change to the project directory
+
+```bash
+cd personal-portfolio
+```
+
+3. Install dependencies
+
+```bash
+npm install
+# or
+yarn install
+```
+
+4. Start the development server
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open your browser and visit `http://localhost:3000`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📤 Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Step-by-step guide on how to deploy your portfolio on GitHub Pages:
 
-## Learn More
+1. Create a .github/workflows directories
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+mkdir -p .github/workflows
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Create a deploy-portfolio.yml file
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+touch deploy-portfolio.yml
+```
 
-## Deploy on Vercel
+3. Paste this code in the yml file
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```yml
+name: Deploy Next.js Portfolio to GitHub Pages
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+on:
+    push:
+        branches: [main]
+        paths:
+            - "personal-portfolio/**"
+    # Allow manual triggering
+    workflow_dispatch:
+
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v3
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: "18"
+                  cache: "npm"
+                  cache-dependency-path: personal-portfolio/package-lock.json
+
+            - name: Install dependencies
+              run: npm ci
+              working-directory: personal-portfolio
+
+            - name: Create Sentry Environment File
+              run: |
+                  echo "SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}" > .env.sentry-build-plugin
+              working-directory: personal-portfolio
+
+            - name: Build with Next.js
+              run: |
+                  npm run build
+                  touch out/.nojekyll
+              env:
+                  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+              working-directory: personal-portfolio
+
+            - name: Export static files
+              run: npm run export || true
+              env:
+                  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+              working-directory: personal-portfolio
+
+            - name: Copy public directory to output
+              run: |
+                  # Ensure public assets are in the build output
+                  if [ -d "personal-portfolio/public" ] && [ -d "personal-portfolio/out" ]; then
+                    cp -r personal-portfolio/public/* personal-portfolio/out/
+                  fi
+
+            - name: Deploy to GitHub Pages
+              uses: JamesIves/github-pages-deploy-action@v4
+              with:
+                  folder: personal-portfolio/out
+                  branch: gh-pages
+                  token: ${{ secrets.GITHUB_TOKEN }}
+                  clean: true
+```
+
+4. Build the project
+
+```bash
+npm run build
+# or
+yarn build
+```
+
+5. In your repository settings make sure you're on the gh-pages branch
+
+## 📊 Performance
+
+Share performance metrics of your portfolio:
+
+Lighhose Score: 65-77/100
+
+-   LCP: 0.9s
+-   FCP: 0.3s
+-   TBT: 520ms #Needs more work done
+-   CLS: 0
+-   Speed Index: 1.1s
+
+## 🔮 Future Improvements
+
+List future enhancements you plan to add:
+
+-   [ ] website optimization
+-   [ ] Dark/Light mode toggle
+-   [ ] Multilingual support
+-   [ ] Additional project showcases
+
+## 🙏 Credits
+
+-   Design inspiration from [jsmastery](https://resource.jsmastery.pro/minimal-portfolio)
+-   Based on [JavaScript Mastery](https://www.jsmastery.pro/) tutorial with personal modifications
+-   Icons from [FontAwesome](https://fontawesome.com/) and [React Icons](https://react-icons.github.io/react-icons/)
