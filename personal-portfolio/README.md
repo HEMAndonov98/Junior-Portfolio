@@ -1,4 +1,4 @@
-# 🌟 Your Name - Portfolio
+# 🌟 Hristo - Portfolio
 
 ![Portfolio Banner](Readme%20Assets/portfolio-portrait.png)
 
@@ -20,7 +20,7 @@
 
 This is my personal portfolio website which I created with the help of JavaScript Mastery mainly uisng Nextjs and TailwindCSS. The project aims to showcase my skills and what makes me unique for anyone who would be looking to start a project together
 
-![Portfolio Screenshot](/Readme%20Assets/portfolio-banner.jpeg)
+![Portfolio Screenshot](/Readme%20Assets/portfolio-banner.png)
 
 ## 🔗 Live Demo
 
