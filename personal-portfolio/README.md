@@ -1,6 +1,6 @@
 # 🌟 Your Name - Portfolio
 
-![Portfolio Banner](https://your-banner-image-url.com)
+![Portfolio Banner](Readme%20Assets/portfolio-portrait.png)
 
 ## 📋 Table of Contents
 
@@ -20,7 +20,7 @@
 
 This is my personal portfolio website which I created with the help of JavaScript Mastery mainly uisng Nextjs and TailwindCSS. The project aims to showcase my skills and what makes me unique for anyone who would be looking to start a project together
 
-![Portfolio Screenshot](https://your-screenshot-url.com)
+![Portfolio Screenshot](/Readme%20Assets/portfolio-banner.jpeg)
 
 ## 🔗 Live Demo
 
