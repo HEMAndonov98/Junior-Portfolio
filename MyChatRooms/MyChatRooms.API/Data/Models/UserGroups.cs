@@ -9,11 +9,9 @@ public class UserGroups
     {
         this.UserGroupsId = Guid.NewGuid().ToString();
     }
-
+    [Key]
     public string UserGroupsId { get; set; }
-    [Key]
     public string UserId { get; set; }
-    [Key]
     public string GroupId { get; set; }
 
     [ForeignKey(nameof(UserId))]
