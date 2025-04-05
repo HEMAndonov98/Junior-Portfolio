@@ -5,7 +5,6 @@ namespace MyChatRooms.API.Data.Models;
 
 public class Group
 {
-
     public Group(string name)
     {
         this.Name = name;
@@ -18,5 +17,5 @@ public class Group
     public string Name { get; set; }
 
     [InverseProperty("Groups")]
-    List<UserGroups> UserGroups { get; } = [];
+    public List<UserGroups> UserGroups { get; } = [];
 }
