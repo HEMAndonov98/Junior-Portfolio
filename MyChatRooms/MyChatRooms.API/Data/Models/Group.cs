@@ -1,14 +1,22 @@
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyChatRooms.API.Data.Models;
 
 public class Group
 {
+
+    public Group(string name)
+    {
+        this.Name = name;
+        this.Id = Guid.NewGuid().ToString();
+    }
+
     [Key]
-    public Guid Id { get; set; } = new Guid();
+    public string Id { get; set; }
+    [Required]
     public string Name { get; set; }
 
-
-    List<IdentityUser>? Users { get; set; }
+    [InverseProperty("Groups")]
+    List<UserGroups> UserGroups { get; } = [];
 }
