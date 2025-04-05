@@ -4,17 +4,17 @@
 
 ## 📋 Table of Contents
 
--   [Overview](#overview)
--   [Live Demo](#live-demo)
--   [Features](#features)
--   [Tech Stack](#tech-stack)
--   [Project Structure](#project-structure)
--   [Getting Started](#getting-started)
--   [Deployment](#deployment)
--   [Performance](#performance)
--   [Future Improvements](#future-improvements)
--   [Credits](#credits)
--   [License](#license)
+-   [Overview](#-overview)
+-   [Live Demo](#-live-demo)
+-   [Features](#-features)
+-   [Tech Stack](#-tech-stack)
+-   [Project Structure](#-project-structure)
+-   [Getting Started](#-getting-started)
+-   [Deployment](#-deployment)
+-   [Performance](#-performance)
+-   [Future Improvements](#-future-improvements)
+-   [Credits](#-credits)
+-   [License](#-license)
 
 ## 📝 Overview
 
