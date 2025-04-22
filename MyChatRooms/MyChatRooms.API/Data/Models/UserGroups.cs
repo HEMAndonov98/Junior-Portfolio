@@ -9,6 +9,7 @@ public class UserGroups
     {
         this.UserGroupsId = Guid.NewGuid().ToString();
     }
+    //Add property for admin isAdmin bool
     [Key]
     public string UserGroupsId { get; set; }
     public string UserId { get; set; }
