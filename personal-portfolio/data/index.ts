@@ -90,7 +90,7 @@ export const projects = [
 		id: 1,
 		title: "TimeForge Project Manager",
 		des: "Productivity tool for managing tasks, projects, time tracking, and team collaboration",
-		img: getImagePath("/blog-project.png"),
+		img: getImagePath(""),
 		iconLists: [
 			getImagePath("/CSharpIcon.svg"),
 			getImagePath("/NETcore.svg"),
