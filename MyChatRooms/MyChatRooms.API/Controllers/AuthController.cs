@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using MyChatRooms.API.Data.Models;
 
 namespace MyChatRooms.API.Controllers
 {
@@ -8,10 +9,10 @@ namespace MyChatRooms.API.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<ChatUser> _userManager;
+        private readonly SignInManager<ChatUser> _signInManager;
 
-        public AuthController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public AuthController(UserManager<ChatUser> userManager, SignInManager<ChatUser> signInManager)
         {
             this._userManager = userManager;
             this._signInManager = signInManager;
@@ -21,7 +22,7 @@ namespace MyChatRooms.API.Controllers
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            var user = new IdentityUser { UserName = request.Username, Email = request.Email };
+            var user = new ChatUser { UserName = request.Username, Email = request.Email };
             var result = await this._userManager.CreateAsync(user, request.Password);
 
             if (result.Succeeded) return Ok(new { message = "User registered successfuly" });
