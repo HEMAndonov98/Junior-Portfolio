@@ -124,8 +124,8 @@ export const projects = [
 	{
 		id: 4,
 		title: "Web Chat Application",
-		des: "Web based chat application with a sleek and intuitive UI",
-		img: getImagePath("/p4.svg"),
+		des: "Simple web chat application built with Next.js, Tailwind CSS, TypeScript, .NET Core, and PostgreSQL. Utilizes SignalR for real-time communication.",
+		img: getImagePath("/MyChatRooms-Chat-Page.png"),
 		iconLists: [
 			getImagePath("/next.svg"),
 			getImagePath("/tail.svg"),
@@ -136,39 +136,6 @@ export const projects = [
 		link: "https://github.com/adrianhajdin/iphone",
 	},
 ];
-
-// export const testimonials = [
-//   {
-//     quote:
-//       "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-//     name: "Michael Johnson",
-//     title: "Director of AlphaStream Technologies",
-//   },
-//   {
-//     quote:
-//       "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-//     name: "Michael Johnson",
-//     title: "Director of AlphaStream Technologies",
-//   },
-//   {
-//     quote:
-//       "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-//     name: "Michael Johnson",
-//     title: "Director of AlphaStream Technologies",
-//   },
-//   {
-//     quote:
-//       "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-//     name: "Michael Johnson",
-//     title: "Director of AlphaStream Technologies",
-//   },
-//   {
-//     quote:
-//       "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-//     name: "Michael Johnson",
-//     title: "Director of AlphaStream Technologies",
-//   },
-// ];
 
 export const testimonials = [
 	{
