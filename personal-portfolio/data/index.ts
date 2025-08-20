@@ -133,7 +133,7 @@ export const projects = [
 			getImagePath("/NETcore.svg"),
 			getImagePath("/postgresql.svg"),
 		],
-		link: "https://github.com/adrianhajdin/iphone",
+		link: "https://github.com/HEMAndonov98/Junior-Portfolio/tree/main/MyChatRooms",
 	},
 ];
 
