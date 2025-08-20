@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+
 using MyChatRooms.API.Data;
 using MyChatRooms.API.Data.Models;
 using MyChatRooms.API.Hubs;
