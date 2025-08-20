@@ -15,7 +15,7 @@ A simple real-time chat application built with SignalR for WebSocket communicati
 
 <!-- Add screenshot placeholder -->
 
-![App Screenshot](/Assets/MyChatRooms-Welcome-page.png)
+![App Screenshot](Assets/MyChatRooms-Welcome-page.png)
 
 ## Overview
 
@@ -23,7 +23,7 @@ This is a straightforward chat application that demonstrates real-time communica
 
 <!-- Add demo gif placeholder -->
 
-![Demo](/Assets/MyChatRooms-Chat-Page.png)
+![Demo](Assets/MyChatRooms-Chat-Page.png)
 
 ## Features
 
