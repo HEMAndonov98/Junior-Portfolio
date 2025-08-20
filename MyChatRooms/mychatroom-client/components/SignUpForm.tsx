@@ -18,10 +18,15 @@ export function SingUpForm() {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
+        const registerRequest = {
+            username: username,
+            email: email,
+            password: password,
+        };
         const response = await fetch('http://localhost:5116/api/auth/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, email, password })
+            body: JSON.stringify(registerRequest),
         });
 
 
