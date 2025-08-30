@@ -1,0 +1,205 @@
+/* ===================================================== */
+/* 🔹 Card container */
+.example-card {
+  width: 100%;
+  max-width: 30em;
+  min-height: 55vh; /* taller than before for elongated feel */
+  background-color: #444a95;
+  border-radius: 15px;
+  box-shadow: 14px 15px 15px -2px rgba(0, 0, 0, 0.86);
+  overflow: hidden;
+  border: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card image */
+.example-card img {
+  width: 100%;
+  height: auto;
+  max-height: 45vh; /* image takes ~60% of card height */
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.7);
+}
+
+/* Card header (positioned over image) */
+mat-card-header {
+  position: absolute;
+  top: 15%; /* slightly lower for taller image */
+  left: 70%;
+  transform: translateX(-60%);
+  z-index: 1;
+  text-align: center;
+  color: whitesmoke;
+  width: 90%;
+}
+
+mat-card-title {
+  font-size: clamp(4rem, 5vw, 4.5rem); /* responsive scaling */
+  font-weight: bold;
+}
+
+mat-card-subtitle {
+  font-size: clamp(1.6rem, 2vw, 1.2rem);
+  color: whitesmoke;
+}
+
+/* Card content */
+mat-card-content {
+  flex-grow: 1;
+}
+
+/* Text paragraphs */
+p {
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  font-weight: bold;
+  color: whitesmoke;
+  text-align: left;
+}
+
+/* Weather grid */
+.weather-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  background: #6971b6;
+  border-radius: 12px;
+  min-height: 25vh; /* taller grid for elongated card */
+  color: white;
+}
+
+/* Individual grid items */
+.grid-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.weather-details-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.weather-details-group img {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.label {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.value {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Page container */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1rem;
+  background-color: #0d1164;
+  box-sizing: border-box;
+}
+
+/* Card wrapper */
+.weather-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* ===================================================== */
+/* 📱 RESPONSIVE STYLES */
+/* ===================================================== */
+
+/* Tablets and below */
+@media (max-width: 768px) {
+  .example-card {
+    max-width: 90%;
+  }
+
+  mat-card-title {
+    font-size: clamp(1.5rem, 6vw, 3em);
+  }
+
+  mat-card-subtitle {
+    font-size: clamp(0.8rem, 2vw, 1rem);
+  }
+
+  p {
+    font-size: clamp(0.8rem, 2vw, 1rem);
+  }
+
+  .weather-grid {
+    gap: 0.75rem;
+  }
+
+  .weather-details-group img {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .value {
+    font-size: 1rem;
+  }
+
+  .label {
+    font-size: 0.8rem;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  mat-card-title {
+    font-size: clamp(3em, 16vw, 6em); /* min 3em, scales with viewport, max 4.5em */
+    color: whitesmoke;
+  }
+
+  mat-card-subtitle {
+    font-size: clamp(1.2em, 8vw, 2em); /* min 1.2em, scales with viewport, max 1.5em */
+    color: whitesmoke;
+  }
+
+  p {
+    font-size: clamp(0.7rem, 4vw, 0.9rem);
+  }
+
+  .weather-grid {
+    grid-template-columns: 1fr; /* stack vertically */
+  }
+
+  .grid-item {
+    justify-content: space-around; /* align left */
+  }
+
+  .weather-details-group {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .weather-details-group img {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+
+  .value {
+    font-size: 0.9rem;
+  }
+
+  .label {
+    font-size: 0.7rem;
+  }
+}

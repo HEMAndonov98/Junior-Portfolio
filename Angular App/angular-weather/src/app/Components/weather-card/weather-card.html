@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="search-field">
+        <form (ngSubmit)="searchByCity()">
+            <mat-form-field class=" example-form-field">
+                <mat-label>City name</mat-label>
+                <input matInput type="text" [formControl]="cityControl" />
+                @if (cityControl.value?.length! > 0)
+                {
+                <button matSuffix matIconButton aria-label="Clear" type="button" (click)="cityControl.reset()">
+                    <mat-icon>close</mat-icon>
+                </button>
+                }
+            </mat-form-field>
+        </form>
+    </div>
+    @if (currentWeather !== undefined)
+    {
+    <div class="weather-card">
+        <mat-card class="example-card" appearance="outlined">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-subtitle>{{ currentWeather.location.name }}</mat-card-subtitle>
+                <mat-card-title>{{ currentWeather.current.temp_c || 0 }}°C
+                </mat-card-title>
+            </mat-card-header>
+            <img mat-card-image
+                [src]="getBackground(currentWeather.location.localtime, currentWeather.forecast.forecastday[0].astro.sunrise, currentWeather.forecast.forecastday[0].astro.sunset)"
+                alt='A picture of the current weather'>
+            <mat-card-content>
+                <p>More information</p>
+                <div class="weather-grid">
+                    <div class="grid-item">
+                        <div class="weather-details-group">
+                            <img src="/assets/thermometer-cold.svg"
+                                alt="An image of a thermometer indicating cold temperature" />
+                            <span class="label">Min</span>
+                        </div>
+                        <span class="value">{{ getTodayMinTemperature() }}°C</span>
+                    </div>
+                    <div class="grid-item">
+                        <div class="weather-details-group">
+                            <img src="/assets/thermometer-hot.svg"
+                                alt="An image of a thermometer indicating hot temperature" />
+                            <span class="label">Max</span>
+                        </div>
+
+                        <span class="value">{{ getTodayMaxTemperature() }}°C</span>
+                    </div>
+                    <div class="grid-item">
+                        <div class="weather-details-group">
+                            <img src="/assets/humidity.svg" alt="An image of a water drop indicating humidity" />
+                            <span class="label">Humidity</span>
+                        </div>
+
+                        <span class="value">{{ currentWeather.current.humidity }}%</span>
+                    </div>
+                    <div class="grid-item">
+                        <div class="weather-details-group">
+                            <img src="/assets/wind.svg" alt="An image of a cloud indicating wind speed" />
+                            <span class="label">Wind</span>
+                        </div>
+
+                        <span class="value">{{ currentWeather.current.wind_kph }}km/h</span>
+                    </div>
+                </div>
+
+            </mat-card-content>
+        </mat-card>
+
+    </div>
+    }
+</div>

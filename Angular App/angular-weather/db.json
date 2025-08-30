@@ -1,0 +1,140 @@
+{
+  "weatherData": [
+    {
+      "id": 5128581,
+      "name": "New York",
+      "timezone": -18000,
+      "cod": 200,
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "clear sky",
+          "icon": "01d"
+        }
+      ],
+      "main": {
+        "temp": 298.55,
+        "feels_like": 298.25,
+        "temp_min": 297.15,
+        "temp_max": 300.15,
+        "pressure": 1013,
+        "humidity": 44
+      },
+      "wind": {
+        "speed": 3.6,
+        "deg": 270
+      },
+      "clouds": {
+        "all": 0
+      },
+      "sys": {
+        "country": "US",
+        "sunrise": 1692878400,
+        "sunset": 1692927600
+      }
+    },
+    {
+      "id": 2643743,
+      "name": "London",
+      "timezone": 0,
+      "cod": 200,
+      "weather": [
+        {
+          "id": 801,
+          "main": "Clouds",
+          "description": "few clouds",
+          "icon": "02d"
+        }
+      ],
+      "main": {
+        "temp": 289.82,
+        "feels_like": 288.75,
+        "temp_min": 288.15,
+        "temp_max": 291.15,
+        "pressure": 1016,
+        "humidity": 56
+      },
+      "wind": {
+        "speed": 4.1,
+        "deg": 80
+      },
+      "clouds": {
+        "all": 20
+      },
+      "sys": {
+        "country": "GB",
+        "sunrise": 1692842400,
+        "sunset": 1692894000
+      }
+    },
+    {
+      "id": 1850147,
+      "name": "Tokyo",
+      "timezone": 32400,
+      "cod": 200,
+      "weather": [
+        {
+          "id": 802,
+          "main": "Clouds",
+          "description": "scattered clouds",
+          "icon": "03n"
+        }
+      ],
+      "main": {
+        "temp": 302.15,
+        "feels_like": 306.15,
+        "temp_min": 300.15,
+        "temp_max": 304.15,
+        "pressure": 1009,
+        "humidity": 70
+      },
+      "wind": {
+        "speed": 2.6,
+        "deg": 190
+      },
+      "clouds": {
+        "all": 40
+      },
+      "sys": {
+        "country": "JP",
+        "sunrise": 1692808800,
+        "sunset": 1692858000
+      }
+    },
+    {
+      "id": 2147714,
+      "name": "Sydney",
+      "timezone": 36000,
+      "cod": 200,
+      "weather": [
+        {
+          "id": 803,
+          "main": "Clouds",
+          "description": "broken clouds",
+          "icon": "04d"
+        }
+      ],
+      "main": {
+        "temp": 295.37,
+        "feels_like": 295.22,
+        "temp_min": 294.15,
+        "temp_max": 297.15,
+        "pressure": 1018,
+        "humidity": 65
+      },
+      "wind": {
+        "speed": 5.1,
+        "deg": 150
+      },
+      "clouds": {
+        "all": 75
+      },
+      "sys": {
+        "country": "AU",
+        "sunrise": 1692812400,
+        "sunset": 1692855600
+      }
+    }
+  ]
+}
