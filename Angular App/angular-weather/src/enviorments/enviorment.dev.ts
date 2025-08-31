@@ -1,4 +1,4 @@
 export const environment = {
-  production: false,
-  apiUrl: 'http://localhost:3000/api/weather',
+  production: true,
+  apiUrl: 'https://junior-portfolio-6hrg.onrender.com/api/weather',
 };
