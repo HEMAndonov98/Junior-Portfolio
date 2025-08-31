@@ -5,8 +5,12 @@
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 ![Node.js](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ![Angular Material](https://img.shields.io/badge/Angular_Material-0081CB?style=for-the-badge&logo=angular&logoColor=white)
+![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7)
+![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
 
 A clean and responsive weather application built with Angular and Express.js. Features real-time weather data with dynamic backgrounds based on time of day.
+
+**🌐 [Live Demo](https://ngweatherapp1.netlify.app/)**
 
 ![App Screenshot](./assets/Weather-App-Main.png)
 
