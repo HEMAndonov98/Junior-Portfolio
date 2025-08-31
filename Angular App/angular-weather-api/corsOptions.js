@@ -1,6 +1,6 @@
 const whiteList = [
 	"http://localhost:4200",
-	"https://ngweatherapp1.netlify.app/",
+	"https://ngweatherapp1.netlify.app",
 ];
 const corsOptions = {
 	origin: function (origin, callback) {
