@@ -17,14 +17,7 @@
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "outputPath": "dist/angular-weather",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              },
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/custom-theme.scss", "src/styles.css"]
           },
           "configurations": {
